@@ -1,0 +1,64 @@
+\documentclass[12pt,a4paper,twoside,openright,fleqn]{mwrep}
+\usepackage[latin2]{inputenc}
+\usepackage[OT4,plmath]{polski}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+%\usepackage[a4paper,left=3.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[width=16cm,height=25cm]{geometry}
+\usepackage{fancyvrb}
+\usepackage{listings}
+%\usepackage{bold-extra}
+\usepackage[unicode=true]{hyperref}
+\usepackage{color}
+\usepackage{cite}
+
+\pagestyle{uheadings}
+
+% Definicje ustalaj±ce wygl±d wydruków programów
+\definecolor{darkgray}{rgb}{0.95,0.95,0.95}
+\lstset{frame=tb, backgroundcolor=\color{darkgray}}
+\lstset{numbers=left, numberstyle=\tiny, stepnumber=2, numbersep=5pt}
+\lstset{basicstyle=\ttfamily, keywordstyle=\color{blue}\bfseries}
+
+
+\hypersetup{
+    pdfpagemode=UseOutlines,   % otwiera dokument w trybie jednej strony
+    pdfpagelayout=SinglePage,  %
+    pdfstartpage=1,            % na podanej stronie
+    bookmarksopen=true,        % rozwiniêcie zak³adek
+    bookmarksopenlevel=1,   % do jakiego poziomu
+    colorlinks=true,   % kolorowanie odno¶ników zamiast ramki wokó³ nich
+    citecolor=cyan,   % kolor odno¶ników do bibliografii, domy¶lnie zielony
+    filecolor=red,   % kolor odno¶ników do lokalnych plików, domy¶nie magenta
+    linkcolor=blue,   % kolor odno¶ników wewnêtrznych, domy¶lnie czerwony
+    menucolor=green,   % kolor pozycji menu Acrobata, domy¶lnie czerwony
+    urlcolor=blue,   % kolor odno¶ników do adresów internetowych, domy¶lnie cyan
+                               % DANE DOKUMENTACJI
+    pdfauthor={ARR2016},
+    pdftitle={Projekt przej¶ciowy --- Symulator labolatorium L1.5},
+ }
+
+                                   % DEFINICJE W£ASNE
+\newcommand{\dd}{\text{d}}
+\newtheorem{uwaga}{Uwaga}
+\newtheorem{twr}{Twierdzenie}
+
+
+\title{Projekt przej¶ciowy --- Symulator labolatorium L1.5}
+\author{ARR 2016}
+\date{\today}
+
+
+\begin{document}
+\VerbatimFootnotes
+
+\maketitle
+\tableofcontents
+
+\include{wstep/wstep}
+
+\bibliographystyle{plabbrv}
+\bibliography{bibliografia}
+
+\end{document}
