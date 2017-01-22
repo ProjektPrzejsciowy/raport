@@ -12,6 +12,7 @@
 \usepackage[unicode=true]{hyperref}
 \usepackage{color}
 \usepackage{cite}
+\usepackage{float}
 
 \pagestyle{uheadings}
 
@@ -39,6 +40,30 @@
     pdftitle={Projekt przej¶ciowy --- Symulator laboratorium L1.5},
  }
 
+% Definicje ustalaj±ce wygl±d listingów
+\usepackage{xcolor}
+\definecolor{bluekeywords}{rgb}{0.13,0.13,1}
+\definecolor{greencomments}{rgb}{0,0.5,0}
+\definecolor{redstrings}{rgb}{0.9,0,0}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\lstset{
+	language=C++,
+    frame=tb,
+    tabsize=2, 
+	showstringspaces=false, 
+    basicstyle=\footnotesize\sffamily\color{black},  
+	identifierstyle=\ttfamily\color{black},  
+    commentstyle=\color{greencomments}, 
+    stringstyle=\color{redstrings}, 
+    keywordstyle=\color{bluekeywords}, 
+    morekeywords={library, description},
+    directivestyle={\color{black}},
+    numberstyle=\color[rgb]{0.205, 0.142, 0.73},
+    emph={virtual, ::},
+    emphstyle={\color{magenta}}
+}
+
                                    % DEFINICJE W£ASNE
 \newcommand{\dd}{\text{d}}
 \newtheorem{uwaga}{Uwaga}
@@ -59,8 +84,10 @@
 \include{wstep/wstep}
 
 \include{opisy/opis_srodowiska}
+\include{opisy/opisy_okienek}
 
 \bibliographystyle{plabbrv}
+\nocite{*}
 \bibliography{bibliografia}
 
 \end{document}
