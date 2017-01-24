@@ -1,1 +1,43 @@
 \section{ROS}
+%http://www.ros.org/about-ros/
+%http://wiki.ros.org/ROS/Introduction
+\textsf{ROS} jest meta-systemem operacyjnym rozwijanym w ramach ruchu wolnego oprogramowania. Zawiera: podstawowe procesy systemowe obs³uguj±ce urz±dzenia sprzêtowe robota, sterowanie niskopoziomowe, implementacje wykonywania typowych funkcji, komunikacjê miêdzyw±tkow± oraz zarz±dzanie pakietami. Oprócz tego dostarcza u¿ytkownikowi narzêdzia i~biblioteki pozwalaj±ce na tworzenie i~uruchomianie programu równocze¶nie na wielu komputerach. Jest platform± programistyczn± przeznaczon± do tworzenia oprogramowania steruj±cego robotami.
+\textsf{ROS} jest szczegó³owo opisany na stronie internetowej projektu~\cite{website:gazebo}.  
+
+\subsection{Struktura}
+%http://rab.ict.pwr.wroc.pl/dydaktyka/instrukcje/ros_instrukcja.pdf
+%http://wiki.ros.org/ROS/Concepts
+Dziêki swojej strukturze (zbiór narzêdzi, bibliotek i~konwencji) \textsf{ROS} znacz±co upraszcza proces modelowania z³o¿onych zachowañ robota jednocze¶nie zapewniaj±c ³atwo¶æ przeno¶no¶ci kodu pomiêdzy ró¿nymi platformami robotycznymi. Zasada dzia³ania projektu w~\textsf{ROS} polega na komunikacji \textit{peer-to-peer} lu¼no po³±czonych ze sob± procesów (mog± byæ uruchomione na ró¿nych maszynach) za pomoc± infrastruktury komunikacyjnej zapewnianej przez platformê. Idea struktury ¶rodowiska przedstawiona jest na rysunku~\ref{fig:ros_struktura}.
+
+%%http://rab.ict.pwr.wroc.pl/dydaktyka/instrukcje/ros_instrukcja.pdf
+\begin{figure}[htbp]
+ \begin{center}
+  \includegraphics[width=\textwidth]{wykorzystane_narzedzia/materialy/ros_structure}    
+  \caption{Schemat projektu na platformie \textsf{ROS} \cite{pwrinstrukcja}}
+  \label{fig:ros_struktura}
+ \end{center}
+\end{figure} 
+
+\subsubsection{Pakiety (\textit{packages})}
+%http://wiki.ros.org/ROS/Concepts
+Pakiety s± g³ówn± jednostk± s³u¿±c± do organizacji oprogramowania. Mog± zawieraæ: wêz³y, biblioteki zale¿ne od \textsf{ROS}a, zbiory danych, pliki konfiguracyjne lub inne elementy u¿ytecznie powi±zane ze sob±. Pakiety s± najmniejsz± jednostk± budulcow± systemu \textsf{ROS}, czyli najmniejsz± rzecz±, któr± mo¿na zbudowaæ i~udostêpniæ. Ka¿dy z~nich zawiera dokumentacjê (\textit{manifest}) opisan± w~pliku \texttt{package.xml}.
+
+\subsubsection{Wêz³y (\textit{nodes})}
+%http://wiki.ros.org/ROS/Concepts
+Wêz³y s± wykonywalnymi instancjami programów ¶rodowiska \textsf{ROS}.
+System sterowania robotem zazwyczaj sk³ada siê z~wielu wêz³ów. Przyk³adowo dla jednego robota mobilnego mo¿na wyró¿niæ kilka wêz³ów odpowiadaj±cych za ró¿ne funkcjonalno¶ci: skaner laserowy, silniki, lokalizacjê, planowanie ruchu itd.
+Wyró¿nia siê równie¿ wêze³ nadrzêdny \texttt{master}, który odpowiada za poprawno¶æ komunikacji miêdzy wszystkimi wêz³ami systemu.
+
+\subsubsection{Tematy (\textit{topics}) i wiadomo¶ci (\textit{messages})}
+%http://wiki.ros.org/ROS/Concepts
+Wêz³y porozumiewaj± siê ze sob± poprzez przesy³anie wiadomo¶ci. Wiadomo¶æ jest prost± struktur± danych, w~której znajdowaæ siê mog± pola ró¿nych typów prostych oraz tablic typów prostych. Co istotne, struktura mo¿e mieæ zagnie¿d¿on± budowê, czyli sk³adaæ siê z~dowolnej liczby zagnie¿d¿onych struktur i~tablic. Wiadomo¶ci s± przesy³ane poprzez system transportowy zorganizowany na zasadzie nadawca/odbiorca (\textit{publisher/subscriber}).
+
+Wêze³ wysy³a wiadomo¶æ poprzez opublikowanie jej w danym temacie. Temat jest nazw± s³u¿±c± do identyfikacji zawarto¶ci wiadomo¶ci. Wêze³ odbieraj±cy ¶ledzi wybrane tematy i~otrzymuje wiadomo¶ci wysy³ane do nich. Mo¿e byæ wiele równoczesnych nadawców i~odbiorców dla jednego tematu oraz jeden wêze³ mo¿e publikowaæ i~subskrybowaæ wiele tematów. Poszczególne wêz³y uczestnicz±ce w~komunikacji nie s± ¶wiadome istnienia innych. Odpowiada to idei roz³±czenia produkcji danych od ich konsumpcji.
+
+\subsubsection{Us³ugi (\textit{services})}
+%http://wiki.ros.org/ROS/Concepts
+Us³ugi udostêpniaj± inny mechanizm komunikacji pomiêdzy wêz³ami. Us³uga jest zdefiniowana poprzez parê struktur wiadomo¶ci: jedn± dla ¿±dania, drug± dla odpowiedzi. W~przeciwieñstwie do prostego przesy³ania wiadomo¶ci, które przekazywane s± w~jednym kierunku na zasadzie wiele-do-wielu, us³ugi pozwalaj± na interakcjê ¿±danie/odpowied¼. Takie podej¶cie jest czêsto wymagane w rozproszonym systemie. Wêze³-serwer oferuje us³ugê o danej nazwie, natomiast wêze³-klient korzysta z~niej poprzez zg³oszenie wiadomo¶ci ¿±dania, a~nastêpnie oczekiwanie na odpowied¼. 
+
+\subsubsection{Worki (\textit{bags})}
+%http://wiki.ros.org/ROS/Concepts
+Worki s± formatem zapisu i~odtwarzania informacji zawartych w wiadomo¶ciach. Jest to istotny mechanizm s³u¿±cy do przechowywania danych, które mog± byæ trudne do zebrania np. danych sensorycznych. Umo¿liwiaj± równie¿ testowanie programów dla jednolitego, uprzednio zdefiniowanego, zestawu danych.
