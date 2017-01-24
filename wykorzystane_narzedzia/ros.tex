@@ -1,3 +1,5 @@
+% Krzysztof Kwieciñski
+
 \section{ROS}
 %http://www.ros.org/about-ros/
 %http://wiki.ros.org/ROS/Introduction
@@ -30,7 +32,7 @@ Wyró¿nia siê równie¿ wêze³ nadrzêdny \texttt{master}, który odpowiada za poprawn
 
 \subsubsection{Tematy (\textit{topics}) i wiadomo¶ci (\textit{messages})}
 %http://wiki.ros.org/ROS/Concepts
-Wêz³y porozumiewaj± siê ze sob± poprzez przesy³anie wiadomo¶ci. Wiadomo¶æ jest prost± struktur± danych, w~której znajdowaæ siê mog± pola ró¿nych typów prostych oraz tablic typów prostych. Co istotne, struktura mo¿e mieæ zagnie¿d¿on± budowê, czyli sk³adaæ siê z~dowolnej liczby zagnie¿d¿onych struktur i~tablic. Wiadomo¶ci s± przesy³ane poprzez system transportowy zorganizowany na zasadzie nadawca/odbiorca (\textit{publisher/subscriber}).
+Wêz³y porozumiewaj± siê ze sob± poprzez przesy³anie wiadomo¶ci. Wiadomo¶æ jest prost± struktur± danych, w~której znajdowaæ siê mog± pola ró¿nych typów prostych oraz tablic typów prostych. Co istotne, struktura mo¿e mieæ zagnie¿d¿on± budowê, czyli sk³adaæ siê z~dowolnej liczby zagnie¿d¿onych struktur i~tablic. Wiadomo¶ci s± przesy³ane poprzez system transportowy zorganizowany na zasadzie nadawca--odbiorca (\textit{publisher}-- \textit{subscriber}).
 
 Wêze³ wysy³a wiadomo¶æ poprzez opublikowanie jej w danym temacie. Temat jest nazw± s³u¿±c± do identyfikacji zawarto¶ci wiadomo¶ci. Wêze³ odbieraj±cy ¶ledzi wybrane tematy i~otrzymuje wiadomo¶ci wysy³ane do nich. Mo¿e byæ wiele równoczesnych nadawców i~odbiorców dla jednego tematu oraz jeden wêze³ mo¿e publikowaæ i~subskrybowaæ wiele tematów. Poszczególne wêz³y uczestnicz±ce w~komunikacji nie s± ¶wiadome istnienia innych. Odpowiada to idei roz³±czenia produkcji danych od ich konsumpcji.
 
