@@ -1,1 +1,65 @@
 \section{Docker}
+
+\begin{figure}[htbp]
+ \centering
+ \includegraphics[width=0.4\textwidth]{wykorzystane_narzedzia/materialy/docker.png}
+ \label{fig:docker}
+\end{figure}
+
+Docker to narzêdzie szturmem zdobywaj±ce popularno¶æ na serwerach, szczególnie w ¶rodowiskach chmurowych, gdzie z powodzeniem wspiera lub czasem nawet zastêpuje klasyczn± wirtualizacjê oferowan± przez rozwi±zania typu VMware lub XEN.\\
+%
+Docker dzia³a tylko na j±drze Linux i pozwala uruchamiaæ tylko aplikacje przeznaczone dla Linuxa, ale dla wszystkich u¿ytkowników Windows i Mac jest przygotowane narzêdzie Docker Toolbox, które pozwala zainstalowaæ Dockera w minimalnej maszynie wirtualnej pod kontrol± VirtualBox'a.\\
+%
+Zdecydowan± przewag± Dockera nad wirtualizacj± jest mo¿liwo¶æ uruchomienia aplikacji w wydzielonym kontenerze, ale bez konieczno¶ci emulowania ca³ej warstwy sprzêtowej i~systemu operacyjnego. Docker uruchamia w kontenerze tylko i wy³±cznie proces(y) aplikacji i nic wiêcej. Efektem jest wiêksza efektywno¶æ wykorzystania zasobów sprzêtowych, co przy rozproszonych aplikacjach instalowanych do tej pory na kilkunastu b±d¼ kilkudziesiêciu wirtualnych maszynach przynosi konkretne oszczêdno¶ci.\\
+%
+Docker zastêpuje wirtualizacjê przez stosowanie konteneryzacji. Konteneryzacja polega na tym, ¿e umo¿liwia uruchomienie wskazanych procesów aplikacji w wydzielonych kontenerach, które z punktu widzenia aplikacji s± odrêbnymi instancjami ¶rodowiska uruchomieniowego. Ka¿dy kontener posiada wydzielony obszar pamiêci, odrêbny interfejs sieciowy z w³asnym prywatnym adresem IP oraz wydzielony obszar na dysku, na którym znajduje siê zainstalowany obraz systemu operacyjnego i wszystkich zale¿no¶ci / bibliotek potrzebnych do dzia³ania aplikacji.\\
+%
+Kontenery Dockera dzia³aj± niezale¿nie od siebie i do chwili, w której ¶wiadomie wska¿emy zale¿no¶æ pomiêdzy nimi, nic o sobie nie wiedz±.\\
+%
+Dwie g³ówne korzy¶ci p³yn±ce z korzystania z Dockera to ³atwo¶æ tworzenia ¶rodowisk deweloperskich oraz uproszczenie procesów dostarczania gotowych aplikacji na docelowe ¶rodowiska.\\
+%
+Zmor± ka¿dego programisty jest tworzenie ¶rodowiska deweloperskiego na potrzeby ka¿dego kolejnego projektu. Wiadomo, ¿e ka¿dy projekt bêdzie dzia³a³ na innej bazie danych, innym kontenerze aplikacji z inn± list± dodatkowych us³ug, które do czasu pojawienia siê narzêdzi typu Vagrant instalowane by³y bezpo¶rednio na laptopie programisty. Utrzymanie kilku ¶rodowisk dla wielu projektów bywa³o niemo¿liwe. Vagrant w pewien sposób rozwi±zuje ten problem przez tworzenie wirtualnego ¶rodowiska instalowanego za pomoc± odpowiednich skryptów, ale to rozwi±zanie nie rozwi±zuje wszystkich problemów: nadal musimy napisaæ skrypty instaluj±ce wszystkie zale¿no¶ci i potrzebny jest mocny sprzêt ¿eby ud¼wign±æ pe³ne ¶rodowisko w trybie wirtualizacji. Kilka takich ¶rodowisk na laptopie mo¿e te¿ skutecznie zaj±æ ca³± przestrzeñ dyskow±.\\
+%
+Z pomoc± przychodzi Docker, który pozwala zbudowaæ ¶rodowisko deweloperskie bez wirtualizacji i bez wiêkszego wysi³ku zwi±zanego z instalacj± oprogramowania. Docker pozwala wykorzystywaæ gotowe obrazy zainstalowanych systemów, aplikacji i baz danych, które zosta³y wcze¶niej przygotowane i umieszczone w publicznym rejestrze. Rejestr jest dostêpny za darmo i zawiera obrazy oficjalnie budowane przez opiekunów / twórców konkretnych rozwi±zañ: \url{https://hub.docker.com/explore/}. Dziêki temu, je¶li chcemy u¿ywaæ V-Rep, Gazebo czy ROS, jest du¿a szansa na to, ¿e gotowy obraz bêdziemy mogli pobraæ z repozytorium i nie traciæ czasu na jego przygotowanie. Je¶li jednak nie znajdziemy tego czego szukamy, to zawsze mo¿emy zbudowaæ w³asny obraz bazuj±c na jednym z bardziej generycznych zawieraj±cych tylko zainstalowany system operacyjny (Ubuntu, Fedora, itp.) lub zainstalowane ¶rodowisko uruchomieniowe (Java, Python czy ASP.NET).
+
+\subsection{Podstawowe elementy}
+\textbf{Docker Engine} to g³ówna sk³adowa i aplikacja typu klient-serwer, z³o¿ona z trzech elementów: klienta (CLI), serwera (daemon-a) oraz REST API.
+\begin{figure}[htbp]
+ \centering
+ \includegraphics[width=0.7\textwidth]{wykorzystane_narzedzia/materialy/docker_structure.png}
+ \label{fig:docker_structure}
+\end{figure}\\
+%
+\textbf{Daemon Docker-a} jest centralnym miejscem, z którego nastêpuje zarz±dzanie kontenerami jak i obrazami. Dotyczy to zarówno ich pobierania, budowy czy uruchamiania. Polecenia do wykonywania tych czynno¶ci s± przesy³ane przez klienta z wykorzystaniem Docker REST API. Same obrazy s± natomiast przechowywane w repozytorium obrazów, czy to publicznym czy prywatnym np. \textbf{Docker Hub}. W tym miejscu nale¿y zaznaczyæ, ¿e poza wieloma oficjalnymi obrazami udostêpniane s± równie¿ nieoficjalne : budowane przez spo³eczno¶æ Docker-a.\\
+%
+W odró¿nieniu od maszyn wirtualnych, kontenery wymagaj± du¿o mniejszych zasobów do samego uruchomienia, a i sam czas ich uruchomienia jest znacz±co ni¿szy. Zosta³o to jednak uzyskane kosztem zmniejszenia izolacji pomiêdzy kontenerem, a samym systemem operacyjnym : poprzez wspó³dzielenie j±dra systemu.\\
+%
+\textbf{Obrazy} s± tak naprawdê szablonami w trybie read-only, z których kontenery s± uruchamiane. Sk³adaj± siê one z wielu warstw (layer-ów), które, dziêki zastosowaniu ujednoliconego systemu plików (UFS), Docker ³±czy w jeden konkretny obraz. Podstaw± ka¿dego jest obraz bazowy, np. Ubuntu, na który nak³adane s± kolejne warstwy. Ka¿da kolejna czynno¶æ (instrukcja) wykonywana na obrazie bazowym tworzy kolejn± warstwê, np. wykonanie komendy czy utworzenie pliku/katalogu. Komplet instrukcji tworz±cych obraz jest przechowywany w pliku Dockerfile. Podczas ¿±dania pobrania obrazu przez klienta, plik ten jest przetwarzany, czego wynikiem jest finalny obraz.\\
+%
+Poprzez zastosowanie warstw uzyskano bardzo niskie zu¿ycie przestrzeni dyskowej, poniewa¿ podczas zmiany obrazu czy jego aktualizacji, budowana jest nowa warstwa, która zastêpuje poprzedni± (aktualizowan±). Pozosta³e warstwy pozostaj± nienaruszone. Oznacza to, i¿ mo¿liwe jest wspó³dzielenie warstw tylko do odczytu pomiêdzy kontenerami, czego efektem jest du¿o ni¿sze zu¿ycie przestrzeni dyskowej, w porównaniu do standardowych VM.\\
+%
+\textbf{Registry}, czyli repozytorium obrazów, jest faktycznym miejscem przechowywania obrazów. Mo¿e byæ publiczne b±d¼ prywatne, lokalne b±d¼ zdalne. Najpopularniejszym repozytorium jest Docker Hub, który oferuje wiele dodatkowych funkcjonalno¶ci, np. mo¿liwo¶æ utworzenia repozytorium prywatnego. Oczywi¶cie istniej± inne platformy, które pozwalaj± na przechowywanie swoich obrazów, jak np.  Quay.io, ale mo¿liwe jest tak¿e utworzenie w³asnej biblioteki : czy to lokalnie na komputerze, na którym zosta³ zainstalowany Docker czy zdalnie, na jednej z innych maszyn, którymi zarz±dzamy.\\
+%
+Wspomniany wielokrotnie \textbf{kontener} to efekt ujednolicenia warstw tylko do odczytu oraz pojedynczej warstwy do odczytu i zapisu, dziêki której mo¿liwe jest funkcjonowanie wymaganych zadañ. Kontener wykonuje okre¶lone wcze¶niej zadanie, najczê¶ciej jedno. Zawiera system operacyjny, pliki u¿ytkownika, a tak¿e tzw. metadane, dodawane automatycznie podczas tworzenia b±d¼ startu kontenera.\\
+%
+Kontener okre¶lany jest równie¿ jako ¶rodowisko wykonywalne Dockera. Mo¿e przyjmowaæ jeden z piêciu stanów:
+\begin{itemize}
+\item created : utworzony, gotowy do uruchomienia,
+\item up : dzia³aj±cy, wykonuj±cy zadanie,
+\item exited : wy³±czony, w trybie bezczynno¶ci po zakoñczeniu zadania,
+\item paused : wstrzymany,
+\item restarting : w trakcie ponownego uruchamiania.
+\end{itemize}
+%
+Czas dzia³ania kontenera jest zale¿ny od zadania, które wykonuje. Samo uruchomienie sk³ada siê z siedmiu kroków:
+\begin{enumerate}
+\item Pobrania wybranego obrazu, pod warunkiem, ¿e nie zosta³ ju¿ pobrany wcze¶niej.
+\item Utworzenia kontenera.
+\item Za³adowania systemu plików i utworzenia warstwy do odczytu i zapisu.
+\item Zainicjowania sieci b±d¼ mostka sieciowego.
+\item Konfiguracji sieci (adresu IP).
+\item Uruchomienia zadania.
+\item Przechwytywania wyj¶cia i prowadzenia dziennika zdarzeñ.
+\end{enumerate}
+%
+Mo¿liwe jest ³±czenie (linkowanie) kontenerów, przez co zyskuj± one bezpo¶rednie po³±czenie ze sob±. Same zadania wykonywane przez kontener s± tak samo wydajne, jakby by³y uruchamianie bezpo¶rednio w systemie gospodarza.
