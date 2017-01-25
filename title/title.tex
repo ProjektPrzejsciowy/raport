@@ -1,0 +1,71 @@
+\newcommand{\MONTH}{%
+  \ifcase\the\month
+  \or styczeñ %January% 1
+  \or luty %February% 2
+  \or marzec %March% 3
+  \or kwiecieñ %April% 4
+  \or maj %May% 5
+  \or czerwiec %June% 6
+  \or lipiec %July% 7
+  \or sierpieñ %August% 8
+  \or wrzesieñ %September% 9
+  \or pa¼dziernik %October% 10
+  \or listopad %November% 11
+  \or grudzieñ %December % 12
+  \fi}
+
+\newgeometry{left=1.5cm,right=1.5cm,bottom=1.5cm,top=1.5cm} %wymaga geometry 5.0+
+\thispagestyle{empty}
+%\vspace*{-2.5cm}
+\noindent
+\fbox{\parbox{\linewidth}{
+\vspace{5mm}
+\makebox[\linewidth][l]{
+\includegraphics[scale=1]{title/figures/znak-pwr_poziom-pl-cmyk.eps}
+
+}\\
+\rule{\linewidth}{1.5pt}
+\mbox{
+\begin{minipage}[b]{\linewidth}
+\begin{center}
+\vspace{25mm}
+\textbf{\LARGE Projekt Przej¶ciowy}\\
+\textbf{\large Wirtualne Laboratorium L1.5}
+\end{center}
+\vspace{2.5cm}
+\begin{minipage}[t]{0.45\textwidth}
+\end{minipage}
+
+
+\begin{flushright}
+\parbox{6cm}{
+Prowadz±cy:\\
+dr in¿. Robert Muszyñski\\
+dr in¿. Janusz Jakubiak
+}\end{flushright}
+\hspace{5mm}
+\parbox{5cm}{
+\begin{tabbing}
+Krzysztof Kwieciñski  \\
+Kamil Bogus  \\
+Micha³ Burdka  \\
+Krzysztof Kuczyñski  \\
+Witold Lipieta  \\
+Micha³ Prêdkiewicz  \\
+Artur B³a¿ejewski  \\
+Pawe³ Jachimowski  \\
+Rafa³ Cymiñski  \\
+Jêdrzej Stolarz  \\
+
+\end{tabbing}
+
+Rok akademicki 2016/17\\
+}\\[4cm]
+\begin{center}
+Wroc³aw, \MONTH \the\year
+\end{center}
+\vspace{1cm}
+\end{minipage}
+}}}
+\restoregeometry
+\newpage
