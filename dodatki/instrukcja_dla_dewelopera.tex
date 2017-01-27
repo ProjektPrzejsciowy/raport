@@ -34,6 +34,34 @@ Modele obiektów znajduj± siê pod adresem \url{https://github.com/ProjektPrzejsci
 
 \section{Uruchamianie obrazu i konfiguracja}
 \label{sec:kon}
+Przed uruchomieniem obrazu nale¿y zezwoliæ na pracê obrazu Dockera z X serwerem poleceniem:
+\begin{itemize}
+	\item xhost +
+\end{itemize}
+
+Obraz nale¿y uruchomiæ przy pomocy komendy:
+\begin{itemize}
+\item docker run -it -e DISPLAY=unix\$DISPLAY -v=/tmp/.X11-unix:/tmp\/.X11-unix:rw -v$[$scie¿ka\_do\_katalogu\_lokalnego$]:[$scie¿ka\_gdzie\_ma\_byæ\_montowany\_w\_obrazie$]$ $[$nazwa obrazu$]$
+\end{itemize}
+
+W miejscu $[$scie¿ka\_do\_katalogu\_lokalnego$]$ nale¿y podaæ ¶cie¿kê do katalogu z pobranym kodem ¼ród³owym pluginu, za $[$scie¿ka\_gdzie\_ma\_byæ\_montowany\_w\_obrazie$]$ nale¿y podstawiæ: /root/catkin\_ws/src/projekt\_przejsciowy
+
+W analogiczny sposób przy pomocy opcji -v mo¿na wspó³dzieliæ dowolny katalog z kontenerem Dockera.
+
+Nastêpnie, pracuj±c ju¿ w kontenerze wywo³anego obrazu nale¿y dodaæ w pliku /root/.bashrc :
+\begin{itemize}
+	\item export GAZEBO\_PLUGIN\_PATH=/root/catkin\_ws/devel/lib/
+	\item source \~/catkin\_ws/devel/setup.bash
+\end{itemize} 
+
+Je¿eli obraz nie zawiera³ modeli wymaganych przez Gazebo to nale¿y dodaæ je do katalogu /root/.gazebo/ np. pobieraj±c je z repozytorium.
+
+Przed uruchomieniem symulatora nale¿y skompilowaæ plugin poleceniem:
+\begin{itemize}
+	\item cd /root/catkin\_ws/
+	\item catkin\_make
+\end{itemize}
 
 \section{Dockerfile}
 \label{sec:dockerfile}
+Pod adresem \url{https://github.com/ProjektPrzejsciowy/docker} dostêpne s± pliki Dockerfile, które umo¿liwiaj± wygenerowanie nowego obrazu dla wersji deweloperskiej i testowej/finalnej. Na ich podstawie mo¿na wygenerowaæ w³asne obrazy, które nastêpnie mo¿na umie¶ciæ na platformie \textbf{DockerHub}.
