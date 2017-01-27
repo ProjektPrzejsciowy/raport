@@ -10,6 +10,45 @@ Plugin, czyli wtyczka, jest czê¶ci± kodu, który zosta³ skompilowany jako wspó³dz
 \end{itemize}
 Oprogramowanie utworzone w ramach projektu wykorzystuje dwie z nich: GUI i World.
 \subsection{GUI}
-Plugin GUI jest bezpo¶rednio zwi±zany z graficznym interfejsem u¿ytkownika. Z jego poziomu mo¿na w prosty sposób dodawaæ elementy takie jak przyciski, okna, listy czy pola tekstowe.
+Plugin GUI jest bezpo¶rednio zwi±zany z graficznym interfejsem u¿ytkownika. Z jego poziomu mo¿na w prosty sposób dodawaæ elementy takie jak przyciski, okna, listy czy pola tekstowe. Wtyczka dodawana jest do pliku konfiguracji ¶wiata w nastêpuj±cy sposób:
+\begin{lstlisting}[language=bash]
+...
+<gui fullscreen='0'>
+<plugin name='SimulationGUI' filename='lib_simulation_gui_plugin.so'/>
+...
+\end{lstlisting}
+Z wykorzystaniem pluginu GUI i bibliotek Qt utworzona zosta³a w górnej czê¶ci okna symulacji belka z trzema przyciskami otwieraj±cymi opisane wcze¶niej okna konfiguracyjne, zwiêkszaj±ce funkcjonalno¶æ symulatora.
+
+Wtyczka interfejsu ma ograniczony dostêp do zasobów Gazebo. Chc±c z jej pomoc± dokonywaæ modyfikacji na scenie konieczne jest wysy³anie odpowiednich komend do pluginu World. W projekcie wykorzystano w tym celu komunikacjê za pomoc± topiców symulatora. Wtyczka GUI pe³ni rolê nadawcy (publisher), natomiast wtyczka World jest subskrybentem (subscriber). Wiadomo¶ci mog± mieæ dowolny, wcze¶nie zdefiniowany format. Przyk³adowo, je¿eli wysy³ane s± informacje o pozycji robota, format wiadomo¶ci zawiera nazwê modelu i sze¶æ zmiennych liczbowych przechowuj±cych pozycjê i orientacjê.
+
+Tworzenie topiców i konfiguracja komunikacji realizowana jest z poziomu kodu, z wykorzystaniem bibliotek Gazebo.
+
 \subsection{World}
-World plugin pozwala na edycjê ró¿nych parametrów ¶wiata, przyk³adowo silnika fizyki lub o¶wietlenia. Ponadto umo¿liwia modyfikowanie sceny i znajduj±cych siê na niej obiektów.
+World plugin pozwala na edycjê ró¿nych parametrów ¶wiata, przyk³adowo silnika fizyki lub o¶wietlenia. Ponadto umo¿liwia modyfikowanie sceny i znajduj±cych siê na niej obiektów. Wtyczka jest bezpo¶rednio zwi±zana z plikiem ustawieñ z rozszerzeniem .world, ³adowanym podczas uruchamiania Gazebo. Ten plik jest równie¿ odpowiedzialny za uruchomienie wybranej wtyczki:
+\begin{lstlisting}[language=bash]
+<sdf version='1.6'>
+<world name='default'>
+<plugin name='projekt_przejsciowy' filename='libprojekt_przejsciowy.so'/>
+...
+\end{lstlisting}
+Budowa pluginu world w pliku ¼ród³owym jest do¶æ prosta i intuicyjna. Minimalny kod pozwalaj±cy skompilowaæ bibliotekê ma nastêpuj±c± postaæ:
+\begin{lstlisting}[language=bash]
+#include <gazebo/gazebo.hh>
+
+namespace gazebo
+{
+  class WorldPluginTutorial : public WorldPlugin
+  {
+    public: WorldPluginTutorial() : WorldPlugin()
+            {
+              printf("Witaj!\n");
+            }
+
+    public: void Load(physics::WorldPtr _world, sdf::ElementPtr _sdf)
+            {
+            }
+  };
+  GZ_REGISTER_WORLD_PLUGIN(WorldPluginTutorial)
+}
+\end{lstlisting}
+Na podstawie powy¿szego kody, przy odpowiedniej konfiguracji plików makefile mo¿na zbudowaæ plik z rozszerzeniem .so, który jako biblioteka jest dodawany do programu.
