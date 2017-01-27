@@ -98,13 +98,13 @@ $"$access control disabled, clients can connect from any host$"$
 Uruchomienie obrazu systemu odbywa siê poprzez wpisanie w konsoli polecenia (powoduje stworzenie nowego kontenera, na podstawie wywo³anego i otwiera go - wszelkie zmiany bêd± zapisywane w nowym kontenerze) :
 
 \begin{itemize}
-\item docker run -it -e DISPLAY=unix\$DISPLAY -v=/tmp/.X11-unix:/tmp\/.X11-unix:rw projektprzejsciowy2016/docker\_lab\_beta:latest
+\item docker run -it -e DISPLAY=unix\$DISPLAY -v=/tmp/.X11-unix:/tmp/.X11-unix:rw projektprzejsciowy2016/docker\_lab\_beta:latest
 
 \end{itemize}
 
 W przypadku gdy potrzebujemy wspó³dzieliæ pewne katalogi lokalne z Dockerem nale¿y  w poleceniu uruchamiaj±cym obraz systemu $"$docker run$"$ skorzystaæ z opcji -v:
 \begin{itemize}
-\item docker run -it -e DISPLAY=unix\$DISPLAY -v=/tmp/.X11-unix:/tmp\/.X11-unix:rw -v$[$scie¿ka\_do\_katalogu\_lokalnego$]:[$scie¿ka\_gdzie\_ma\_byæ\_montowany\_w\_obrazie$]$ projektprzejsciowy2016/docker\_lab\_beta:latest
+\item docker run -it -e DISPLAY=unix\$DISPLAY -v=/tmp/.X11-unix:/tmp/.X11-unix:rw -v$[$scie¿ka\_do\_katalogu\_lokalnego$]:[$scie¿ka\_gdzie\_ma\_byæ\_montowany\_w\_obrazie$]$ projektprzejsciowy2016/docker\_lab\_beta:latest
 
 \end{itemize}
 
