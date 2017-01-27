@@ -5,3 +5,22 @@
  \label{fig:konfiguracja_swiata}
  \caption{Okno konfiguracji ¶wiata}
 \end{figure}
+
+Okno konfiguracji ¶wiata pozwala zmodyfikowaæ zawarto¶æ sceny. Domy¶lnie ³adowany jest jedynie ground plane, czyli bazowe pod³o¿e, na którym umieszczane s± modele. Okno umo¿liwia szybkie rozpoczêcie pracy z wybranymi modelami. U¿ytkownik ma mo¿liwo¶æ wyboru sali z listy dostêpnej w lewej czê¶ci okna. Lista tworzona jest na podstawie plików konfiguracji sali z rozszerzeniem .txt znajduj±cych siê w folderze worlds, w katalogu ¼ród³owym Gazebo. Przyk³adowy zestaw danych ma nastêpuj±c± postaæ:
+\begin{lstlisting}[language=bash]
+smietnik 4.6 1.3 0 0 0 0
+szafa 1.5 -3.6 0 0 0 0
+kaloryfer -4.5 1.6 0 0 0 1.570796
+kaloryfer -4.5 -2.8 0 0 0 1.570796
+stol -2.4 2.5 0 0 0 0
+stol -4 2.5 0 0 0 0
+stol -0.7 -3.4 0 0 0 0
+krzeslo -1.7 -2.6 0 0 0 0
+krzeslo -1 -2.6 0 0 0 0
+krzeslo -0.1 -2.6 0 0 0 0
+\end{lstlisting}
+W ka¿dej linii dodawany jest jeden z dostêpnych modeli. Trzy pierwsze liczby oznaczaj± pozycjê modelu na scenie (X, Y, Z). Pozosta³e okre¶laj± orientacjê wokó³ ka¿dej z osi.
+
+Naci¶niecie przycisku "Wczytaj" powoduje wyczyszczenie sceny i za³adowanie wybranej sali. Przycisk "Wyczy¶æ" usuwa wszystkie statyczne modele.
+
+Prawa strona okna konfiguracji ¶wiata pozwala wybraæ liczbê robotów Pioneer, z którymi u¿ytkownik chce rozpocz±æ pracê. Liczba pozycji w lewym polu okre¶la ile robotów jest dostêpnych, natomiast liczba pozycji w prawym polu definiuje liczbê robotów na scenie. Zawarto¶æ pól mo¿na modyfikowaæ za pomoc± przycisków "Dodaj" i "Schowaj".

@@ -1,3 +1,15 @@
 \section{Pluginy}
+Plugin, czyli wtyczka, jest czê¶ci± kodu, który zosta³ skompilowany jako wspó³dzielona biblioteka i dodany do symulatora. Ma on dostêp do wszystkich funkcjonalno¶ci Gazebo poprzez gotowe klasy jêzyka C++. Pluginy s± bardzo przydatne nie tylko ze wzglêdu na mo¿liwo¶æ kontroli dowolnych modu³ów symulatora, ale równie¿ ze wzglêdu na swoj± elastyczno¶æ. Z ³atwo¶ci± mo¿na je dodawaæ i usuwaæ z systemu. W Gazebo jest dostêpnych 6 typów wtyczek:
+\begin{itemize}
+\item World
+\item Model
+\item Sensor
+\item System
+\item Visual
+\item GUI
+\end{itemize}
+Oprogramowanie utworzone w ramach projektu wykorzystuje dwie z nich: GUI i World.
 \subsection{GUI}
+Plugin GUI jest bezpo¶rednio zwi±zany z graficznym interfejsem u¿ytkownika. Z jego poziomu mo¿na w prosty sposób dodawaæ elementy takie jak przyciski, okna, listy czy pola tekstowe.
 \subsection{World}
+World plugin pozwala na edycjê ró¿nych parametrów ¶wiata, przyk³adowo silnika fizyki lub o¶wietlenia. Ponadto umo¿liwia modyfikowanie sceny i znajduj±cych siê na niej obiektów.
