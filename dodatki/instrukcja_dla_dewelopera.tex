@@ -56,5 +56,12 @@ Nastêpnie, pracuj±c ju¿ w kontenerze wywo³anego obrazu nale¿y dodaæ w pliku /roo
 
 Je¿eli obraz nie zawiera³ modeli wymaganych przez Gazebo to nale¿y dodaæ je do katalogu /root/.gazebo/ np. pobieraj±c je z repozytorium.
 
+Przed uruchomieniem symulatora nale¿y skompilowaæ plugin poleceniem:
+\begin{itemize}
+	\item cd /root/catkin\_ws/
+	\item catkin\_make
+\end{itemize}
+
 \section{Dockerfile}
 \label{sec:dockerfile}
+Pod adresem \url{https://github.com/ProjektPrzejsciowy/docker} dostêpne s± pliki Dockerfile, które umo¿liwiaj± wygenerowanie nowego obrazu dla wersji deweloperskiej i testowej/finalnej. Na ich podstawie mo¿na wygenerowaæ w³asne obrazy, które nastêpnie mo¿na umie¶ciæ na platformie \textbf{DockerHub}.
