@@ -1,2 +1,30 @@
 \chapter{Instrukcja dla dewelopera}
-W niniejszej instrukcji znajduje siê opis wstêpnych czynno¶ci wymaganych do dalszego rozwoju symulatora. Prezentuje konfiguracjê narzêdzi, ¶rodowiska oraz obrazu a tak¿e automatyzacjê procesu budowy obrazu dla wersji deweloperskiej oraz testowej/finalnej przy pomocy pliku Dockerfile.
+\section{Wstêp}
+
+W niniejszej instrukcji znajduje siê opis wstêpnych czynno¶ci wymaganych do dalszego rozwoju symulatora. Prezentuje konfiguracjê narzêdzi, ¶rodowiska oraz obrazu a tak¿e automatyzacjê procesu budowy obrazu dla wersji deweloperskiej oraz testowej/finalnej przy pomocy pliku Dockerfile.\\
+Instrukcja opisuje stan na styczeñ 2017 roku, przez co informacje w niej zawarte mog± byæ nieaktualne. Dotyczy to systemów operacyjnych wspieraj±cych Dockera, dostêpnej wersji ROS'a oraz Gazebo, a tak¿e API, z którego korzystano.  
+%
+\section{System}
+\label{sec:system}
+Wymagany jest system Linux w architekturze 64 bitowej. Wybrane wspierane dystrybucje \textbf{Ubuntu}:
+\begin{itemize}
+	\item Yakkety 16.10
+	\item Xenial 16.04 (LTS)
+	\item Trusty 14.04 (LTS)
+\end{itemize}
+\textbf{Debian}:
+\begin{itemize}
+	\item Jessie 8.0 (LTS)
+	\item Wheezy 7.7 (LTS)
+\end{itemize}
+Pe³na lista wspieranych dystrybucji dostêpna jest pod adresem \url{https://docs.docker.com/engine/installation/linux/}.
+Praca z Dockerem mo¿liwa jest równie¿ na systemie Windows, ale niniejsza instrukcja nie zawiera opisu dla tego systemu, gdy¿ nie uda³o siê skonfigurowaæ ¶rodowiska do pracy z Dockerem w trybie graficznym.
+
+\section{Docker}
+Oprogramowanie nale¿y zainstalowaæ zgodnie z instrukcj± przygotowan± dla wybranego systemu operacyjnego umieszczon± na stronie dostawcy (link z podpunktu \ref{sec:system}).
+
+\section{Obraz}
+Symulator mo¿na rozbudowywaæ, dziêki przygotowanemu obrazowi, dostêpnego na~platformie \textbf{DockerHub} pod adresem \url{https://hub.docker.com/r/projektprzejsciowy2016/docker_lab/}. Sk³ada siê z systemu operacyjnego \textbf{Ubuntu Xenial 16.04 LTS}, systemu \textbf{ROS Kinetic} oraz \textbf{Gazebo 7.5} oraz pozosta³ych narzêdzi do komunikacji ROS-Gazebo. Je¿eli zaprezentowana konfiguracja jest akceptowalna przez dewelopera, nale¿y pobraæ obraz. W przeciwnym wypadku nale¿y zapoznaæ siê z rozdzialem \ref{sec:dockerfile}, w którym przedstawiono, jak przy pomocy pliku Dockerfile mo¿na wygenerowaæ nowy obraz.
+
+\section{Dockerfile}
+\label{sec:dockerfile}
