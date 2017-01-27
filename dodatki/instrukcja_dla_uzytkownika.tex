@@ -1,0 +1,261 @@
+%\documentclass[10pt, a4paper]{article}
+
+%Preambu³a dokumentu
+%\usepackage{graphicx}       % pakiet graficzny, umo¿liwiaj±cy m.in.
+                            % import grafik w formacie eps
+%\usepackage{rotating}       % pakiet umo¿liwiaj±cy obracanie rysunków
+%\usepackage{subfigure}      % pakiet umo¿liwiaj±cy tworzenie podrysunków
+%\usepackage{epic}           % pakiet umo¿liwiaj±cy rysowanie w ¶rodowisku latex
+%\usepackage{listings}       % pakiet dedykowany zrodlom programow
+%\usepackage{verbatim}       % pakiet dedykowany rozmaitym wydrukom tekstowym
+%\usepackage{amssymb}        % pakiet z rozmaitymi symbolami matematycznymi
+%\usepackage{amsmath}        % pakiet z rozmaitymi ¶rodowiskami matematycznymi
+%\usepackage[polish]{babel}  % pakiet lokalizuj±cy dokument w jêzyku polskim
+%\usepackage[OT4]{fontenc}
+%\usepackage[utf8]{inputenc} % w miejsce utf8 mo¿na wpisaæ latin2 b±d¼ cp1250,
+                            % w zale¿no¶ci od tego w jaki sposób kodowane s± 
+                            % polskie znaki diakrytyczne przy wprowadzaniu 
+                            % z klawiatury.
+
+%\usepackage[draft]{prelim2e}% informacja w stopcje o statusie dokumentu 
+                            % (draft-szkic lub final-wersja ostateczna) 
+
+%\textwidth      16cm
+%\textheight     25.5cm
+%\evensidemargin -3mm
+%\oddsidemargin  -3mm
+%\topmargin      -20mm
+
+
+% deklaracje wymagane przez funkcjê drukuj±c± tytu³ dokumentu:
+%
+%\author{Automatyka i Robotyka, specjalno¶æ Robotyka\footnote{Wydzia³ Elektroniki, Politechnika Wroc³awska, ul. Z. Janiszewskiego 11/17, %50-372 Wroc³aw} }
+
+ 
+%\title{ Wirtualne laboratorium robotyki - Instrukcja } 
+
+%\date{\today}
+
+% Koniec preambu³y dokumentu
+
+\chapter{Instrukcja dla u¿ytkownika}
+
+% Tekst dokumentu
+
+%\begin{document}
+%\maketitle % drukuje tytul, autora i datê zdefiniowan± w preambule
+%
+%\the\setitem
+%\def\tablename{Tabela}
+%
+
+\section{Wstêp}
+\label{sec:wstep} % definicja etykiety rozdzia³u
+W niniejszej instrukcji znajduje siê opis czynno¶ci potrzebnych do uruchomienia i u¿ytkowania systemu wirtualnego laboratorium.
+
+\section{Przygotowanie systemu do uruchomienia}
+\label{sec:przygotowanie}
+Do uruchomiania systemu wymagane jest zainstalowanie lokalnie Dockera. W przypadku braku tego pakietu na komputerze nale¿y post±piæ zgodnie z instrukcj± zamieszon± na stronie Dockera:
+
+\begin{itemize}
+\item $https://docs.docker.com/engine/installation/linux/ubuntu/$
+\end{itemize}
+
+
+Aby nie musieæ za ka¿dym razem u¿ywaæ $sudo$ w poleceniach dotycz±cych Dockera nale¿y po zakoñczeniu instalacji wykonaæ polecenie:
+\begin{itemize}
+\item sudo usermod -aG docker [nazwa twojego u¿ytkownika] 
+\end{itemize}
+
+i potwierdziæ has³em u¿ytkownika. 
+
+Nastêpnie nale¿y pobraæ na dysk lokalny obraz systemu znajduj±cy siê w repozytorium DockerHub. Nale¿y pobraæ najnowszy obraz wersji beta o nazwie :
+\begin{itemize}
+\item projektprzejsciowy2016$/$docker\_lab\_beta:latest
+\end{itemize}
+
+Mo¿liwe jest to za pomoc± polecenia:
+\begin{itemize}
+\item docker pull projektprzejsciowy2016$/$docker\_lab\_beta:latest
+\end{itemize}
+
+
+\begin{figure}[hbt]
+  \setlength{\unitlength}{1.0cm}
+  \centering 
+  
+    \includegraphics[width=12 cm]{dodatki/grafika/pull.png}
+ 
+\end{figure}
+
+
+Przed uruchomieniem obrazu nale¿y zezwoliæ wszystkim aplikacjom dzia³aj±cym z poziomu Dockera na uruchamianie siê w trybie graficznym:
+\begin{itemize}
+\item xhost +
+\end{itemize}
+
+Powinien pojawiæ siê nastêpuj±cy komunikat:
+$"$access control disabled, clients can connect from any host$"$
+
+Uruchomienie obrazu systemu odbywa siê poprzez wpisanie w konsoli polecenia (powoduje stworzenie nowego kontenera, na podstawie wywo³anego i otwiera go - wszelkie zmiany bêd± zapisywane w nowym kontenerze) :
+
+\begin{itemize}
+\item docker run -it -e DISPLAY=unix\$DISPLAY -v=/tmp/.X11-unix:/tmp\/.X11-unix:rw projektprzejsciowy2016/docker\_lab\_beta:latest
+
+\end{itemize}
+
+W przypadku gdy potrzebujemy wspó³dzieliæ pewne katalogi lokalne z Dockerem nale¿y  w poleceniu uruchamiaj±cym obraz systemu $"$docker run$"$ skorzystaæ z opcji -v:
+\begin{itemize}
+\item docker run -it -e DISPLAY=unix\$DISPLAY -v=/tmp/.X11-unix:/tmp\/.X11-unix:rw -v$[$scie¿ka\_do\_katalogu\_lokalnego$]:[$scie¿ka\_gdzie\_ma\_byæ\_montowany\_w\_obrazie$]$ projektprzejsciowy2016/docker\_lab\_beta:latest
+
+\end{itemize}
+
+
+System ROS wraz z symulatorem - Gazebo, uruchamiany jest poleceniem wykonywanym ju¿ z poziomu obrazu Dockera:
+\begin{itemize}
+\item roslaunch projekt\_przejsciowy l15.launch \&
+\end{itemize} 
+
+Po chwili powinien uruchomiæ siê symulator Gazebo:
+
+\begin{figure}[hbt]
+  \setlength{\unitlength}{1.0cm}
+  \centering 
+  
+    \includegraphics[width=12 cm]{dodatki/grafika/EkranGlowny.png}
+
+\end{figure}
+ Aby przetestowaæ czy wszystko dzia³a poprawnie nale¿y dodaæ na scenê robota jak w puncie 3.2.
+
+
+Je¶li potrzebujemy uruchomiæ drug± konsolê dzia³aj±c± na tym samym kontenerze to nale¿y uruchomiæ drug± konsolê (mo¿na to wykonaæ skrótem klawiszowym $"$shitf$"$+$"$ctrl$"$+$"$t$"$, a nastêpnie sprawdzamy nazwê kontenera, który mamy ju¿ uruchomiony:
+
+ \begin{itemize}
+\item docker ps -a
+\end{itemize}
+
+
+Powy¿sze polecenia wy¶wietla listê wszystkich dostêpnych lokalnie kontenerów, w której mo¿na sprawdziæ nazwy poszczególnych kontenerów:
+
+
+\begin{figure}[hbt]
+  \setlength{\unitlength}{1.0cm}
+  \centering 
+  
+    \includegraphics[width=12 cm]{dodatki/grafika/ps-a.png}
+
+\end{figure}
+
+Na przedstawionej na rysunku li¶cie przyk³adowe nazwy to goofy\_varahamihira oraz stupefied\_tesla. Podpiêcie siê konsol± pod otwarty ju¿ kontener opiera siê o polecenie:
+
+
+ \begin{itemize}
+\item docker exec -it Nazwa\_Kontenera bash
+\end{itemize}
+
+
+Uruchamiaj±c kontener po raz kolejny mamy mo¿liwo¶æ zachowania historii wykorzystywanych poleceñ. Przy uruchamianiu kontenera odwo³ujemy siê do ostatniego otwieranego dockera:
+\begin{itemize}
+\item docker start -i \$(docker ps -q -l)
+\end{itemize}
+
+
+
+\section{Obs³uga systemu}
+\subsection{Dodawanie modelu sali}
+Na obrazie systemu, w chwili obecnej, znajduj± siê trzy przyk³adowe modele ¶wiata:
+\begin{itemize}
+\item model sali L1.5 w budynku C-16
+\item dwa dodatkowe modele sk³adaj±ce siê z u³o¿onych w pewien sposób mebli 
+\end{itemize}
+
+Dodanie jednego z tych ¶wiatów mo¿liwe jest z poziomu okna "Konfiguracja ¦wiata". Dostep do wspomnianego okna jest z poziomu widoku g³ównego Gazebo pod przyciskiem umieszczonym z lewej strony listwy na górze ekranu.
+\begin{figure}[hbt]
+  \setlength{\unitlength}{1.0cm}
+  \centering 
+  
+    \includegraphics[width=12 cm]{dodatki/grafika/KonfiguracjaSwiata.png}
+
+\end{figure}
+W oknie tym, po lewej stronie, znajduje siê lista dostêpnych ¶wiatów oraz dwa przyciski "Wczytaj" i "Wyczy¶æ". Wybran± salê mo¿na dodaæ wybieraj±c j± z lisy i klikaj±c pierwszy przycisk. Je¶li wczytamy inn± salê w momencie, gdy jaka¶ jest ju¿ wczytana, scena zostanie automatycznie wyczyszczona i wczytany aktualnie wybrany ¶wiat. Przycisk "Wyczy¶æ$"$ s³u¿y do usuniêcia wszystkich obiektów ze sceny z wyj±tkiem robotów.
+
+ \subsection{Dodawanie modeli robotów}
+Z okna konfiguracji ¶wiata mo¿na równie¿ dodawaæ na scenê roboty (jak narazie dostêpne s± trzy roboty Pioneer). S³u¿± do tego listy na ¶rodku oraz z prawej strony okienka. Lista ¶rodkowa zawiera roboty, które s± dostêpne do dodania, a prawa te, które s± ju¿ dodane. Aby dodaæ robota, nale¿y wybraæ go z listy ¶rodkowej i klikn±æ przycisk " Dodaj". Roboty dodane pojawi± siê na scenie w momencie klikniêcia przycisku $"$Zatwierd¼$"$.  W tym samym momencie pojawiaj± siê w systemie ROS topiki zwi±zane z dodawanymi robotami. Listê topików mo¿na zobaczyæ wpisuj±c w terminalu:
+\begin{itemize}
+\item rostopic list
+\end{itemize}
+Przycisk $"$Schowaj" umieszcza wybranego robota poza sal± w tak zwanym schowku.
+
+Aby przetestowaæ czy Gazebo dobrze wspó³pracuje z systemem ROS nale¿y dodaæ robota a nastêpnie w konsoli wydaæ polecenie publikuj±ce w topicu ROSa odpowiadaj±cym za prêdko¶æ dodanego robota:
+\begin{itemize}
+\item rostopic  pub $/$pionner\_1$/$RosAria$/$cmd\_vel geometry\_msgs$/$Twist $--$ '[1.0, 0.0, 0.0]' '[0.0, 0.0, -0.5]
+\end{itemize}
+
+W efekcie robot powinien zacz±æ poruszaæ siê po okrêgu.
+
+\begin{figure}[hbt]
+  \setlength{\unitlength}{1.0cm}
+  \centering 
+  
+    \includegraphics[width=12 cm]{dodatki/grafika/EkranGlownyZSalaIRobotami.png}
+
+\end{figure}
+
+ \subsection{Resetowanie robotów i ustawianie ich w zadanych miejscach}
+
+Do resetowania i ustawiania w zadanej pozycji robotów s³u¿y okno $"$Zarz±dzanie robotami". Okno podzielone jest na zak³adki - ka¿da z nich dotyczy osobnego robota. Umieszczony w ka¿dej zak³adce przycisk $"$Reset$"$ ustawia odpowiedniego robota w punkcie (0,0) sali z orientacj± równ± 0. Pola tekstowe s³u¿± do zadawania pozycji (X,Y) i orientacji robota. Warto¶ci z tych pól s± wykorzystywane przy u¿ywaniu przycisku "Ustaw". W trakcie klikniêcia warto¶ci te s± sprawdzane i ich ewentualna niepoprawno¶æ jest sygnalizowana czerwonym pod¶wietleniem pola. Dopiero po sprawdzeniu robot przemieszczany jest na ustalon± pozycjê.
+\begin{figure}[hbt]
+  \setlength{\unitlength}{1.0cm}
+  \centering 
+  
+    \includegraphics[width=6 cm]{dodatki/grafika/OknoZarzadzaniaRobotami.png}
+
+\end{figure}
+
+
+\subsection{Wy¶wietlanie i zapisywanie wyników}
+Do wizualizacji i zapisu danych z eksperymentu przygotowane zosta³o okno $"$Wyniki symulacji$"$. Okno podzielone jest na zak³adki, w których mo¿na otrzymaæ podgl±d trajektorii wszystkich robotów oraz przebiegi po³o¿enia X, Y i orientacji. W pierwszej zak³adce s± trasy przebyte przez wszystkie roboty a ka¿da kolejna zak³adka odnosi siê do konkretnego robota prezentuj±c jego po³o¿enie i orientacjê. Przycisk $"$Reset danych$"$ pozwala wyczy¶ciæ wykresy i zacz±æ zbieraæ je od nowa.  Okno daje mo¿liwo¶æ zapisania przebiegów do plików, które znajduj± siê potem w folderze /root/.  Wa¿ne jest te¿ aby przed rozpoczêciem zbierania danych do konkretnego wykresu za pomoc± przycisku z dolnego paska Gazebo $"$PLAY/PAUSE$"$ zatrzymaæ czas symulacyjny nastêpnie przyciskiem $"$Reset Time$"$ aby wykres by³ czytelny.
+\begin{figure}[hbt]
+  \setlength{\unitlength}{1.0cm}
+  \centering 
+  
+    \includegraphics[width=6 cm]{dodatki/grafika/Wykres.png}
+
+\end{figure}
+
+\subsection{Wy¶wietlanie odczytów z czujników}
+Aby uzyskaæ dostêp do pomiarów z czujników nale¿y z paska narzêdzi Gazebo wybraæ zak³adkê $Window$ $>>$ $Topic$ $Visualization$. Uruchomi siê okno:
+ \begin{figure}[hbt]
+  \setlength{\unitlength}{1.0cm}
+  \centering 
+  
+    \includegraphics[width=6 cm]{dodatki/grafika/WizualizacjaLista.png}
+
+\end{figure}
+
+Nastêpnie wybieramy topic czujnika, z którego chcemy wy¶wietlaæ dane. Dla skanera laserowego wykres wygl±da nastêpuj±co:
+
+ \begin{figure}[hbt]
+  \setlength{\unitlength}{1.0cm}
+  \centering 
+  
+    \includegraphics[width=8 cm]{dodatki/grafika/Skaner.png}
+
+\end{figure}
+\newpage
+\subsection{Dodawanie i edycja modeli przeszkód na scenie}
+Aby dodaæ przeszkodê na scenê nale¿y z lewej strony ekranu wej¶æ w zak³adkê "Insert", wybraæ klikniêciem model i klikn±æ na miejsce na scenie, w którym chcemy postawiæ przeszkodê. Proste modele przeszkód dostêpne s± z paska narzêdzi Gazabo. 
+Aby zmieniæ statyczno¶æ przeszkody nale¿y klikn±æ na ni± prawym przyciskiem myszy (PPM) a nastêpnie z rozwiniêtego menu wybraæ opcjê $"$Edit Model". Gazebo przejdzie do trybu edycji modelu. Wybieramy zak³adkê "Model" i zaznaczamy lub odznaczamy opcjê $"$Static":
+
+\begin{figure}[hbt]
+  \setlength{\unitlength}{1.0cm}
+  \centering 
+  
+    \includegraphics[width=6 cm]{dodatki/grafika/Edit.png}
+
+\end{figure}
+
+
+
+%\end{document}
+ 
