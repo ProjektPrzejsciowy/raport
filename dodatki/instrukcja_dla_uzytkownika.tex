@@ -80,13 +80,11 @@ Mo¿liwe jest to za pomoc± polecenia:
 \end{itemize}
 
 
-\begin{figure}[hbt]
-  \setlength{\unitlength}{1.0cm}
-  \centering 
+\begin{center}
   
     \includegraphics[width=12 cm]{dodatki/grafika/pull.png}
  
-\end{figure}
+\end{center}
 
 
 Przed uruchomieniem obrazu nale¿y zezwoliæ wszystkim aplikacjom dzia³aj±cym z poziomu Dockera na uruchamianie siê w trybie graficznym:
@@ -118,13 +116,11 @@ System ROS wraz z symulatorem - Gazebo, uruchamiany jest poleceniem wykonywanym 
 
 Po chwili powinien uruchomiæ siê symulator Gazebo:
 
-\begin{figure}[hbt]
-  \setlength{\unitlength}{1.0cm}
-  \centering 
+\begin{center}
   
     \includegraphics[width=12 cm]{dodatki/grafika/EkranGlowny.png}
 
-\end{figure}
+\end{center}
  Aby przetestowaæ czy wszystko dzia³a poprawnie nale¿y dodaæ na scenê robota jak w puncie 3.2.
 
 
@@ -138,13 +134,11 @@ Je¶li potrzebujemy uruchomiæ drug± konsolê dzia³aj±c± na tym samym kontenerze to
 Powy¿sze polecenia wy¶wietla listê wszystkich dostêpnych lokalnie kontenerów, w której mo¿na sprawdziæ nazwy poszczególnych kontenerów:
 
 
-\begin{figure}[hbt]
-  \setlength{\unitlength}{1.0cm}
-  \centering 
+\begin{center}
   
     \includegraphics[width=12 cm]{dodatki/grafika/ps-a.png}
 
-\end{figure}
+\end{center}
 
 Na przedstawionej na rysunku li¶cie przyk³adowe nazwy to goofy\_varahamihira oraz stupefied\_tesla. Podpiêcie siê konsol± pod otwarty ju¿ kontener opiera siê o polecenie:
 
@@ -170,13 +164,11 @@ Na obrazie systemu, w chwili obecnej, znajduj± siê trzy przyk³adowe modele ¶wiat
 \end{itemize}
 
 Dodanie jednego z tych ¶wiatów mo¿liwe jest z poziomu okna "Konfiguracja ¦wiata". Dostep do wspomnianego okna jest z poziomu widoku g³ównego Gazebo pod przyciskiem umieszczonym z lewej strony listwy na górze ekranu.
-\begin{figure}[hbt]
-  \setlength{\unitlength}{1.0cm}
-  \centering 
+\begin{center}
   
     \includegraphics[width=12 cm]{dodatki/grafika/KonfiguracjaSwiata.png}
 
-\end{figure}
+\end{center}
 W oknie tym, po lewej stronie, znajduje siê lista dostêpnych ¶wiatów oraz dwa przyciski "Wczytaj" i "Wyczy¶æ". Wybran± salê mo¿na dodaæ wybieraj±c j± z lisy i klikaj±c pierwszy przycisk. Je¶li wczytamy inn± salê w momencie, gdy jaka¶ jest ju¿ wczytana, scena zostanie automatycznie wyczyszczona i wczytany aktualnie wybrany ¶wiat. Przycisk "Wyczy¶æ$"$ s³u¿y do usuniêcia wszystkich obiektów ze sceny z wyj±tkiem robotów.
 
  \subsection{Dodawanie modeli robotów}
@@ -193,67 +185,55 @@ Aby przetestowaæ czy Gazebo dobrze wspó³pracuje z systemem ROS nale¿y dodaæ robo
 
 W efekcie robot powinien zacz±æ poruszaæ siê po okrêgu.
 
-\begin{figure}[hbt]
-  \setlength{\unitlength}{1.0cm}
-  \centering 
+\begin{center}
   
     \includegraphics[width=12 cm]{dodatki/grafika/EkranGlownyZSalaIRobotami.png}
 
-\end{figure}
+\end{center}
 
  \subsection{Resetowanie robotów i ustawianie ich w zadanych miejscach}
 
 Do resetowania i ustawiania w zadanej pozycji robotów s³u¿y okno $"$Zarz±dzanie robotami". Okno podzielone jest na zak³adki - ka¿da z nich dotyczy osobnego robota. Umieszczony w ka¿dej zak³adce przycisk $"$Reset$"$ ustawia odpowiedniego robota w punkcie (0,0) sali z orientacj± równ± 0. Pola tekstowe s³u¿± do zadawania pozycji (X,Y) i orientacji robota. Warto¶ci z tych pól s± wykorzystywane przy u¿ywaniu przycisku "Ustaw". W trakcie klikniêcia warto¶ci te s± sprawdzane i ich ewentualna niepoprawno¶æ jest sygnalizowana czerwonym pod¶wietleniem pola. Dopiero po sprawdzeniu robot przemieszczany jest na ustalon± pozycjê.
-\begin{figure}[hbt]
-  \setlength{\unitlength}{1.0cm}
-  \centering 
+\begin{center}
   
     \includegraphics[width=6 cm]{dodatki/grafika/OknoZarzadzaniaRobotami.png}
 
-\end{figure}
+\end{center}
 
 
 \subsection{Wy¶wietlanie i zapisywanie wyników}
 Do wizualizacji i zapisu danych z eksperymentu przygotowane zosta³o okno $"$Wyniki symulacji$"$. Okno podzielone jest na zak³adki, w których mo¿na otrzymaæ podgl±d trajektorii wszystkich robotów oraz przebiegi po³o¿enia X, Y i orientacji. W pierwszej zak³adce s± trasy przebyte przez wszystkie roboty a ka¿da kolejna zak³adka odnosi siê do konkretnego robota prezentuj±c jego po³o¿enie i orientacjê. Przycisk $"$Reset danych$"$ pozwala wyczy¶ciæ wykresy i zacz±æ zbieraæ je od nowa.  Okno daje mo¿liwo¶æ zapisania przebiegów do plików, które znajduj± siê potem w folderze /root/.  Wa¿ne jest te¿ aby przed rozpoczêciem zbierania danych do konkretnego wykresu za pomoc± przycisku z dolnego paska Gazebo $"$PLAY/PAUSE$"$ zatrzymaæ czas symulacyjny nastêpnie przyciskiem $"$Reset Time$"$ aby wykres by³ czytelny.
-\begin{figure}[hbt]
-  \setlength{\unitlength}{1.0cm}
-  \centering 
-  
+\begin{center}
+
     \includegraphics[width=6 cm]{dodatki/grafika/Wykres.png}
 
-\end{figure}
+\end{center}
 
 \subsection{Wy¶wietlanie odczytów z czujników}
 Aby uzyskaæ dostêp do pomiarów z czujników nale¿y z paska narzêdzi Gazebo wybraæ zak³adkê $Window$ $>>$ $Topic$ $Visualization$. Uruchomi siê okno:
- \begin{figure}[hbt]
-  \setlength{\unitlength}{1.0cm}
-  \centering 
-  
+\begin{center}
+
     \includegraphics[width=6 cm]{dodatki/grafika/WizualizacjaLista.png}
 
-\end{figure}
+\end{center}
 
 Nastêpnie wybieramy topic czujnika, z którego chcemy wy¶wietlaæ dane. Dla skanera laserowego wykres wygl±da nastêpuj±co:
 
- \begin{figure}[hbt]
-  \setlength{\unitlength}{1.0cm}
-  \centering 
+\begin{center}
   
     \includegraphics[width=8 cm]{dodatki/grafika/Skaner.png}
 
-\end{figure}
+\end{center}
 \newpage
 \subsection{Dodawanie i edycja modeli przeszkód na scenie}
 Aby dodaæ przeszkodê na scenê nale¿y z lewej strony ekranu wej¶æ w zak³adkê "Insert", wybraæ klikniêciem model i klikn±æ na miejsce na scenie, w którym chcemy postawiæ przeszkodê. Proste modele przeszkód dostêpne s± z paska narzêdzi Gazabo. 
 Aby zmieniæ statyczno¶æ przeszkody nale¿y klikn±æ na ni± prawym przyciskiem myszy (PPM) a nastêpnie z rozwiniêtego menu wybraæ opcjê $"$Edit Model". Gazebo przejdzie do trybu edycji modelu. Wybieramy zak³adkê "Model" i zaznaczamy lub odznaczamy opcjê $"$Static":
 
-\begin{figure}[hbt]
-  \setlength{\unitlength}{1.0cm}
-  \centering 
-  
+\begin{center}
+
     \includegraphics[width=6 cm]{dodatki/grafika/Edit.png}
 
-\end{figure}
+\end{center}
 
 
 
