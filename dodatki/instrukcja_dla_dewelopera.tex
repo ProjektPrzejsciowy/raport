@@ -36,6 +36,10 @@ W obrazie obowi±zuje standardowa dla systemów Linux struktura katalogów i plików
 
 Plik .bashrc jest wykonywany przy ka¿dorazowym uruchomieniu shella. Dziêki temu, nie ma konieczno¶ci wykonywania poleceñ za ka¿dym razem, gdy uruchomiono obraz lub kontener - komendy wystarczy dodaæ do pliku. W punkcie \ref{sec:kon} podano, jakie komendy nale¿y dodaæ do pliku .bashrc do prawid³owej pracy symulatora.
 
+Katalog .gazebo/ standardowo jest tworzony podczas pierwszego uruchomienia programu Gazebo. W katalogu .gazebo/models/ przechowywane s± modele obiektów. W przypadku pracy z innym obrazem lub braku modeli nale¿y przed uruchomieniem symulatora utworzyæ katalog i dodaæ brakuj±ce modele.
+
+Katalog catkin\_ws/ jest przeznaczony do pracy deweloperskiej. W podkatalogu catkin\_ws/src/nale¿y umie¶ciæ kod ¼ród³owy np. pluginu do programu Gazebo, programów pracuj±cych z systemem ROS lub inne.
+
 \section{Repozytoria}
 Do pracy nad symulatorem wymagane s± dwa repozytoria: \textbf{kod ¼ród³owy pluginu} zapewniaj±cego wszystkie funkcjonalno¶ci prezentowanego symulatora oraz \textbf{modele} obiektów wymaganych przez program Gazebo.\\
 Kod ¼ród³owy pluginu nale¿y pobraæ lokalnie. Dostêpny jest pod adresem \url{https://github.com/ProjektPrzejsciowy/projekt_przejsciowy}. Repozytorium bêdzie dostêpne w obrazie za pomoc± mechanizmu wspó³dzielenia katalogów. Dziêki temu deweloper mo¿e pracowaæ z pluginem lokalnie, korzystaj±c z wybranego IDE a wszystkie zmiany bêd± widoczne z poziomu kontenera. Informacjê o tym, jak wspó³dzieliæ katalog z obrazem Dockera umieszczono w podpunkcie \ref{sec:kon}.\\
