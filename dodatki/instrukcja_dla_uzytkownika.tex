@@ -1,153 +1,148 @@
-\documentclass[10pt, a4paper]{article}
+%\documentclass[10pt, a4paper]{article}
 
-%PreambuÅ‚a dokumentu
-\usepackage{graphicx}       % pakiet graficzny, umoÅ¼liwiajÄ…cy m.in.
+%Preambu³a dokumentu
+%\usepackage{graphicx}       % pakiet graficzny, umo¿liwiaj±cy m.in.
                             % import grafik w formacie eps
-\usepackage{rotating}       % pakiet umoÅ¼liwiajÄ…cy obracanie rysunkÃ³w
-\usepackage{subfigure}      % pakiet umoÅ¼liwiajÄ…cy tworzenie podrysunkÃ³w
-\usepackage{epic}           % pakiet umoÅ¼liwiajÄ…cy rysowanie w Å›rodowisku latex
-\usepackage{listings}       % pakiet dedykowany zrodlom programow
-\usepackage{verbatim}       % pakiet dedykowany rozmaitym wydrukom tekstowym
-\usepackage{amssymb}        % pakiet z rozmaitymi symbolami matematycznymi
-\usepackage{amsmath}        % pakiet z rozmaitymi Å›rodowiskami matematycznymi
-\usepackage[polish]{babel}  % pakiet lokalizujÄ…cy dokument w jÄ™zyku polskim
-\usepackage[OT4]{fontenc}
-\usepackage[utf8]{inputenc} % w miejsce utf8 moÅ¼na wpisaÄ‡ latin2 bÄ…dÅº cp1250,
-                            % w zaleÅ¼noÅ›ci od tego w jaki sposÃ³b kodowane sÄ… 
+%\usepackage{rotating}       % pakiet umo¿liwiaj±cy obracanie rysunków
+%\usepackage{subfigure}      % pakiet umo¿liwiaj±cy tworzenie podrysunków
+%\usepackage{epic}           % pakiet umo¿liwiaj±cy rysowanie w ¶rodowisku latex
+%\usepackage{listings}       % pakiet dedykowany zrodlom programow
+%\usepackage{verbatim}       % pakiet dedykowany rozmaitym wydrukom tekstowym
+%\usepackage{amssymb}        % pakiet z rozmaitymi symbolami matematycznymi
+%\usepackage{amsmath}        % pakiet z rozmaitymi ¶rodowiskami matematycznymi
+%\usepackage[polish]{babel}  % pakiet lokalizuj±cy dokument w jêzyku polskim
+%\usepackage[OT4]{fontenc}
+%\usepackage[utf8]{inputenc} % w miejsce utf8 mo¿na wpisaæ latin2 b±d¼ cp1250,
+                            % w zale¿no¶ci od tego w jaki sposób kodowane s± 
                             % polskie znaki diakrytyczne przy wprowadzaniu 
                             % z klawiatury.
 
-\usepackage[draft]{prelim2e}% informacja w stopcje o statusie dokumentu 
+%\usepackage[draft]{prelim2e}% informacja w stopcje o statusie dokumentu 
                             % (draft-szkic lub final-wersja ostateczna) 
 
-\textwidth      16cm
-\textheight     25.5cm
-\evensidemargin -3mm
-\oddsidemargin  -3mm
-\topmargin      -20mm
+%\textwidth      16cm
+%\textheight     25.5cm
+%\evensidemargin -3mm
+%\oddsidemargin  -3mm
+%\topmargin      -20mm
 
 
-% deklaracje wymagane przez funkcjÄ™ drukujÄ…cÄ… tytuÅ‚ dokumentu:
+% deklaracje wymagane przez funkcjê drukuj±c± tytu³ dokumentu:
 %
-\author{Automatyka i Robotyka, specjalnoÅ›Ä‡ Robotyka\footnote{WydziaÅ‚ Elektroniki, Politechnika WrocÅ‚awska, ul. Z. Janiszewskiego 11/17, 50-372 WrocÅ‚aw} }
+%\author{Automatyka i Robotyka, specjalno¶æ Robotyka\footnote{Wydzia³ Elektroniki, Politechnika Wroc³awska, ul. Z. Janiszewskiego 11/17, %50-372 Wroc³aw} }
 
  
-\title{ Wirtualne laboratorium robotyki - Instrukcja } 
+%\title{ Wirtualne laboratorium robotyki - Instrukcja } 
 
-\date{\today}
+%\date{\today}
 
-% Koniec preambuÅ‚y dokumentu
+% Koniec preambu³y dokumentu
+
+\chapter{Instrukcja dla u¿ytkownika}
 
 % Tekst dokumentu
 
-\begin{document}
-\maketitle % drukuje tytul, autora i datÄ™ zdefiniowanÄ… w preambule
+%\begin{document}
+%\maketitle % drukuje tytul, autora i datê zdefiniowan± w preambule
 %
 %\the\setitem
-\def\tablename{Tabela}
+%\def\tablename{Tabela}
 %
 
-\section{WstÄ™p}
-\label{sec:wstep} % definicja etykiety rozdziaÅ‚u
-W niniejszej instrukcji znajduje siÄ™ opis czynnoÅ›ci potrzebnych do uruchomienia i uÅ¼ytkowania systemu wirtualnego laboratorium.
+\section{Wstêp}
+\label{sec:wstep} % definicja etykiety rozdzia³u
+W niniejszej instrukcji znajduje siê opis czynno¶ci potrzebnych do uruchomienia i u¿ytkowania systemu wirtualnego laboratorium.
 
 \section{Przygotowanie systemu do uruchomienia}
 \label{sec:przygotowanie}
-Do uruchomiania systemu wymagane jest zainstalowanie lokalnie Dockera. W przypadku braku tego pakietu na komputerze naleÅ¼y postÄ…piÄ‡ zgodnie z instrukcjÄ… zamieszonÄ… na stronie Dockera:
+Do uruchomiania systemu wymagane jest zainstalowanie lokalnie Dockera. W przypadku braku tego pakietu na komputerze nale¿y post±piæ zgodnie z instrukcj± zamieszon± na stronie Dockera:
 
 \begin{verbatim}
 https://docs.docker.com/engine/installation/linux/ubuntu/
 \end{verbatim}
 
 
-Aby nie musieÄ‡ za kaÅ¼dym razem uÅ¼ywaÄ‡ $sudo$ w poleceniach dotyczÄ…cych Dockera naleÅ¼y po zakoÅ„czeniu instalacji wykonaÄ‡ polecenie:
+Aby nie musieæ za ka¿dym razem u¿ywaæ $sudo$ w poleceniach dotycz±cych Dockera nale¿y po zakoñczeniu instalacji wykonaæ polecenie:
 \begin{verbatim}
- sudo usermod -aG docker [nazwa twojego uÅ¼ytkownika] 
+sudo usermod -aG docker [nazwa twojego u¿ytkownika] 
 \end{verbatim}
 
-i potwierdziÄ‡ hasÅ‚em uÅ¼ytkownika. 
+i potwierdziæ has³em u¿ytkownika. 
 
-NastÄ™pnie naleÅ¼y pobraÄ‡ na dysk lokalny obraz systemu znajdujÄ…cy siÄ™ w repozytorium DockerHub. NaleÅ¼y pobraÄ‡ najnowszy obraz wersji beta o nazwie :
+Nastêpnie nale¿y pobraæ na dysk lokalny obraz systemu znajduj±cy siê w repozytorium DockerHub. Nale¿y pobraæ najnowszy obraz wersji beta o nazwie :
 \begin{verbatim}
- projektprzejsciowy2016$/docker_lab_beta:latest
+projektprzejsciowy2016$/docker_lab_beta:latest
 \end{verbatim}
 
-MoÅ¼liwe jest to za pomocÄ… polecenia:
+Mo¿liwe jest to za pomoc± polecenia:
 \begin{verbatim}
 docker pull projektprzejsciowy2016/docker_lab_beta:latest
 \end{verbatim}
 
 
-\begin{figure}[hbt]
-  \setlength{\unitlength}{1.0cm}
-  \centering 
+\begin{center}
   
-    \includegraphics[width=12 cm]{./grafika/pull.png}
+    \includegraphics[width=12 cm]{dodatki/grafika/pull.png}
  
-\end{figure}
+\end{center}
 
 
-Przed uruchomieniem obrazu naleÅ¼y zezwoliÄ‡ wszystkim aplikacjom dziaÅ‚ajÄ…cym z poziomu Dockera na uruchamianie siÄ™ w trybie graficznym:
+Przed uruchomieniem obrazu nale¿y zezwoliæ wszystkim aplikacjom dzia³aj±cym z poziomu Dockera na uruchamianie siê w trybie graficznym:
 \begin{verbatim}
- xhost +
+xhost +
 \end{verbatim}
 
-Powinien pojawiÄ‡ siÄ™ nastÄ™pujÄ…cy komunikat:
+Powinien pojawiæ siê nastêpuj±cy komunikat:
 $"$access control disabled, clients can connect from any host$"$
 
-Uruchomienie obrazu systemu odbywa siÄ™ poprzez wpisanie w konsoli polecenia (powoduje stworzenie nowego kontenera, na podstawie wywoÅ‚anego i otwiera go - wszelkie zmiany bÄ™dÄ… zapisywane w nowym kontenerze) :
+Uruchomienie obrazu systemu odbywa siê poprzez wpisanie w konsoli polecenia (powoduje stworzenie nowego kontenera, na podstawie wywo³anego i otwiera go - wszelkie zmiany bêd± zapisywane w nowym kontenerze) :
 
 \begin{verbatim}
- docker run -it -e DISPLAY=unix$DISPLAY -v=/tmp/.X11-unix:/tmp/.X11-unix:rw \
+docker run -it -e DISPLAY=unix$DISPLAY -v=/tmp/.X11-unix:/tmp/.X11-unix:rw \
+projektprzejsciowy2016/docker_lab_beta:latest
+\end{verbatim}
+
+W przypadku gdy potrzebujemy wspó³dzieliæ pewne katalogi lokalne z Dockerem nale¿y  w poleceniu uruchamiaj±cym obraz systemu $"$docker run$"$ skorzystaæ z opcji -v:
+\begin{verbatim}
+docker run -it -e DISPLAY=unix$DISPLAY -v=/tmp/.X11-unix:/tmp/.X11-unix:rw \
+-v[scie¿ka_do_katalogu_lokalnego]:[scie¿ka_gdzi_ma_byæ_montowany_w_obrazie]\
  projektprzejsciowy2016/docker_lab_beta:latest
 
 \end{verbatim}
 
-W przypadku gdy potrzebujemy wspÃ³Å‚dzieliÄ‡ pewne katalogi lokalne z Dockerem naleÅ¼y  w poleceniu uruchamiajÄ…cym obraz systemu $"$docker run$"$ skorzystaÄ‡ z opcji -v:
-\begin{verbatim}
-docker run -it -e DISPLAY=unix$DISPLAY -v=/tmp/.X11-unix:/tmp/.X11-unix:rw \
--v[scieÅ¼ka_do_katalogu_lokalnego]:[scieÅ¼ka_gdzie_ma_byÄ‡_montowany_w_obrazie] \
-projektprzejsciowy2016/docker_lab_beta:latest
 
-\end{verbatim}
-
-
-System ROS wraz z symulatorem - Gazebo, uruchamiany jest poleceniem wykonywanym juÅ¼ z poziomu obrazu Dockera:
+System ROS wraz z symulatorem - Gazebo, uruchamiany jest poleceniem wykonywanym ju¿ z poziomu obrazu Dockera:
 \begin{verbatim}
 roslaunch projekt_przejsciowy l15.launch &
 \end{verbatim} 
 
-Po chwili powinien uruchomiÄ‡ siÄ™ symulator Gazebo:
+Po chwili powinien uruchomiæ siê symulator Gazebo:
 
-\begin{figure}[hbt]
-  \setlength{\unitlength}{1.0cm}
-  \centering 
+\begin{center}
   
-    \includegraphics[width=12 cm]{./grafika/EkranGlowny.png}
+    \includegraphics[width=12 cm]{dodatki/grafika/EkranGlowny.png}
 
-\end{figure}
- Aby przetestowaÄ‡ czy wszystko dziaÅ‚a poprawnie naleÅ¼y dodaÄ‡ na scenÄ™ robota jak w puncie 3.2.
+\end{center}
+ Aby przetestowaæ czy wszystko dzia³a poprawnie nale¿y dodaæ na scenê robota jak w puncie 3.2.
 
 
-JeÅ›li potrzebujemy uruchomiÄ‡ drugÄ… konsolÄ™ dziaÅ‚ajÄ…cÄ… na tym samym kontenerze to naleÅ¼y uruchomiÄ‡ drugÄ… konsolÄ™ (moÅ¼na to wykonaÄ‡ skrÃ³tem klawiszowym $"$shitf$"$+$"$ctrl$"$+$"$t$"$, a nastÄ™pnie sprawdzamy nazwÄ™ kontenera, ktÃ³ry mamy juÅ¼ uruchomiony:
+Je¶li potrzebujemy uruchomiæ drug± konsolê dzia³aj±c± na tym samym kontenerze to nale¿y uruchomiæ drug± konsolê (mo¿na to wykonaæ skrótem klawiszowym $"$shitf$"$+$"$ctrl$"$+$"$t$"$, a nastêpnie sprawdzamy nazwê kontenera, który mamy ju¿ uruchomiony:
 
  \begin{verbatim}
 docker ps -a
 \end{verbatim}
 
 
-PowyÅ¼sze polecenia wyÅ›wietla listÄ™ wszystkich dostÄ™pnych lokalnie kontenerÃ³w, w ktÃ³rej moÅ¼na sprawdziÄ‡ nazwy poszczegÃ³lnych kontenerÃ³w:
+Powy¿sze polecenia wy¶wietla listê wszystkich dostêpnych lokalnie kontenerów, w której mo¿na sprawdziæ nazwy poszczególnych kontenerów:
 
 
-\begin{figure}[hbt]
-  \setlength{\unitlength}{1.0cm}
-  \centering 
+\begin{center}
   
-    \includegraphics[width=12 cm]{./grafika/ps-a.png}
+    \includegraphics[width=12 cm]{dodatki/grafika/ps-a.png}
 
-\end{figure}
+\end{center}
 
-Na przedstawionej na rysunku liÅ›cie przykÅ‚adowe nazwy to goofy\_varahamihira oraz stupefied\_tesla. PodpiÄ™cie siÄ™ konsolÄ… pod otwarty juÅ¼ kontener opiera siÄ™ o polecenie:
+Na przedstawionej na rysunku li¶cie przyk³adowe nazwy to goofy\_varahamihira oraz stupefied\_tesla. Podpiêcie siê konsol± pod otwarty ju¿ kontener opiera siê o polecenie:
 
 
  \begin{verbatim}
@@ -155,109 +150,95 @@ docker exec -it Nazwa_Kontenera bash
 \end{verbatim}
 
 
-UruchamiajÄ…c kontener po raz kolejny mamy moÅ¼liwoÅ›Ä‡ zachowania historii wykorzystywanych poleceÅ„. Przy uruchamianiu kontenera odwoÅ‚ujemy siÄ™ do ostatniego otwieranego dockera:
+Uruchamiaj±c kontener po raz kolejny mamy mo¿liwo¶æ zachowania historii wykorzystywanych poleceñ. Przy uruchamianiu kontenera odwo³ujemy siê do ostatniego otwieranego dockera:
 \begin{verbatim}
 docker start -i $(docker ps -q -l)
 \end{verbatim}
 
 
 
-\section{ObsÅ‚uga systemu}
+\section{Obs³uga systemu}
 \subsection{Dodawanie modelu sali}
-Na obrazie systemu, w chwili obecnej, znajdujÄ… siÄ™ trzy przykÅ‚adowe modele Å›wiata:
+Na obrazie systemu, w chwili obecnej, znajduj± siê trzy przyk³adowe modele ¶wiata:
 \begin{itemize}
 \item model sali L1.5 w budynku C-16
-\item dwa dodatkowe modele skÅ‚adajÄ…ce siÄ™ z uÅ‚oÅ¼onych w pewien sposÃ³b mebli 
+\item dwa dodatkowe modele sk³adaj±ce siê z u³o¿onych w pewien sposób mebli 
 \end{itemize}
 
-Dodanie jednego z tych Å›wiatÃ³w moÅ¼liwe jest z poziomu okna "Konfiguracja Åšwiata". Dostep do wspomnianego okna jest z poziomu widoku gÅ‚Ã³wnego Gazebo pod przyciskiem umieszczonym z lewej strony listwy na gÃ³rze ekranu.
-\begin{figure}[hbt]
-  \setlength{\unitlength}{1.0cm}
-  \centering 
+Dodanie jednego z tych ¶wiatów mo¿liwe jest z poziomu okna "Konfiguracja ¦wiata". Dostep do wspomnianego okna jest z poziomu widoku g³ównego Gazebo pod przyciskiem umieszczonym z lewej strony listwy na górze ekranu.
+\begin{center}
   
-    \includegraphics[width=12 cm]{./grafika/KOnfiguracjaSwiata.png}
+    \includegraphics[width=12 cm]{dodatki/grafika/KonfiguracjaSwiata.png}
 
-\end{figure}
-W oknie tym, po lewej stronie, znajduje siÄ™ lista dostÄ™pnych Å›wiatÃ³w oraz dwa przyciski "Wczytaj" i "WyczyÅ›Ä‡". WybranÄ… salÄ™ moÅ¼na dodaÄ‡ wybierajÄ…c jÄ… z lisy i klikajÄ…c pierwszy przycisk. JeÅ›li wczytamy innÄ… salÄ™ w momencie, gdy jakaÅ› jest juÅ¼ wczytana, scena zostanie automatycznie wyczyszczona i wczytany aktualnie wybrany Å›wiat. Przycisk "WyczyÅ›Ä‡$"$ sÅ‚uÅ¼y do usuniÄ™cia wszystkich obiektÃ³w ze sceny z wyjÄ…tkiem robotÃ³w.
+\end{center}
+W oknie tym, po lewej stronie, znajduje siê lista dostêpnych ¶wiatów oraz dwa przyciski "Wczytaj" i "Wyczy¶æ". Wybran± salê mo¿na dodaæ wybieraj±c j± z lisy i klikaj±c pierwszy przycisk. Je¶li wczytamy inn± salê w momencie, gdy jaka¶ jest ju¿ wczytana, scena zostanie automatycznie wyczyszczona i wczytany aktualnie wybrany ¶wiat. Przycisk "Wyczy¶æ$"$ s³u¿y do usuniêcia wszystkich obiektów ze sceny z wyj±tkiem robotów.
 
- \subsection{Dodawanie modeli robotÃ³w}
-Z okna konfiguracji Å›wiata moÅ¼na rÃ³wnieÅ¼ dodawaÄ‡ na scenÄ™ roboty (jak narazie dostÄ™pne sÄ… trzy roboty Pioneer). SÅ‚uÅ¼Ä… do tego listy na Å›rodku oraz z prawej strony okienka. Lista Å›rodkowa zawiera roboty, ktÃ³re sÄ… dostÄ™pne do dodania, a prawa te, ktÃ³re sÄ… juÅ¼ dodane. Aby dodaÄ‡ robota, naleÅ¼y wybraÄ‡ go z listy Å›rodkowej i kliknÄ…Ä‡ przycisk " Dodaj". Roboty dodane pojawiÄ… siÄ™ na scenie w momencie klikniÄ™cia przycisku $"$ZatwierdÅº$"$.  W tym samym momencie pojawiajÄ… siÄ™ w systemie ROS topiki zwiÄ…zane z dodawanymi robotami. ListÄ™ topikÃ³w moÅ¼na zobaczyÄ‡ wpisujÄ…c w terminalu:
+ \subsection{Dodawanie modeli robotów}
+Z okna konfiguracji ¶wiata mo¿na równie¿ dodawaæ na scenê roboty (jak narazie dostêpne s± trzy roboty Pioneer). S³u¿± do tego listy na ¶rodku oraz z prawej strony okienka. Lista ¶rodkowa zawiera roboty, które s± dostêpne do dodania, a prawa te, które s± ju¿ dodane. Aby dodaæ robota, nale¿y wybraæ go z listy ¶rodkowej i klikn±æ przycisk " Dodaj". Roboty dodane pojawi± siê na scenie w momencie klikniêcia przycisku $"$Zatwierd¼$"$.  W tym samym momencie pojawiaj± siê w systemie ROS topiki zwi±zane z dodawanymi robotami. Listê topików mo¿na zobaczyæ wpisuj±c w terminalu:
 \begin{verbatim}
 rostopic list
 \end{verbatim}
-Przycisk $"$Schowaj" umieszcza wybranego robota poza salÄ… w tak zwanym schowku.
+Przycisk $"$Schowaj" umieszcza wybranego robota poza sal± w tak zwanym schowku.
 
-Aby przetestowaÄ‡ czy Gazebo dobrze wspÃ³Å‚pracuje z systemem ROS naleÅ¼y dodaÄ‡ robota a nastÄ™pnie w konsoli wydaÄ‡ polecenie publikujÄ…ce w topicu ROSa odpowiadajÄ…cym za prÄ™dkoÅ›Ä‡ dodanego robota:
+Aby przetestowaæ czy Gazebo dobrze wspó³pracuje z systemem ROS nale¿y dodaæ robota a nastêpnie w konsoli wydaæ polecenie publikuj±ce w topicu ROSa odpowiadaj±cym za prêdko¶æ dodanego robota:
 \begin{verbatim}
 rostopic  pub /pionner_1/RosAria/cmd_vel geometry_msgs/Twist \
 -- '[1.0, 0.0, 0.0]' '[0.0, 0.0, -0.5]
 \end{verbatim}
 
-W efekcie robot powinien zaczÄ…Ä‡ poruszaÄ‡ siÄ™ po okrÄ™gu.
+W efekcie robot powinien zacz±æ poruszaæ siê po okrêgu.
 
-\begin{figure}[hbt]
-  \setlength{\unitlength}{1.0cm}
-  \centering 
+\begin{center}
   
-    \includegraphics[width=12 cm]{./grafika/EkranGlownyZSalaIRobotami.png}
+    \includegraphics[width=12 cm]{dodatki/grafika/EkranGlownyZSalaIRobotami.png}
 
-\end{figure}
+\end{center}
 
- \subsection{Resetowanie robotÃ³w i ustawianie ich w zadanych miejscach}
+ \subsection{Resetowanie robotów i ustawianie ich w zadanych miejscach}
 
-Do resetowania i ustawiania w zadanej pozycji robotÃ³w sÅ‚uÅ¼y okno $"$ZarzÄ…dzanie robotami". Okno podzielone jest na zakÅ‚adki - kaÅ¼da z nich dotyczy osobnego robota. Umieszczony w kaÅ¼dej zakÅ‚adce przycisk $"$Reset$"$ ustawia odpowiedniego robota w punkcie (0,0) sali z orientacjÄ… rÃ³wnÄ… 0. Pola tekstowe sÅ‚uÅ¼Ä… do zadawania pozycji (X,Y) i orientacji robota. WartoÅ›ci z tych pÃ³l sÄ… wykorzystywane przy uÅ¼ywaniu przycisku "Ustaw". W trakcie klikniÄ™cia wartoÅ›ci te sÄ… sprawdzane i ich ewentualna niepoprawnoÅ›Ä‡ jest sygnalizowana czerwonym podÅ›wietleniem pola. Dopiero po sprawdzeniu robot przemieszczany jest na ustalonÄ… pozycjÄ™.
-\begin{figure}[hbt]
-  \setlength{\unitlength}{1.0cm}
-  \centering 
+Do resetowania i ustawiania w zadanej pozycji robotów s³u¿y okno $"$Zarz±dzanie robotami". Okno podzielone jest na zak³adki - ka¿da z nich dotyczy osobnego robota. Umieszczony w ka¿dej zak³adce przycisk $"$Reset$"$ ustawia odpowiedniego robota w punkcie (0,0) sali z orientacj± równ± 0. Pola tekstowe s³u¿± do zadawania pozycji (X,Y) i orientacji robota. Warto¶ci z tych pól s± wykorzystywane przy u¿ywaniu przycisku "Ustaw". W trakcie klikniêcia warto¶ci te s± sprawdzane i ich ewentualna niepoprawno¶æ jest sygnalizowana czerwonym pod¶wietleniem pola. Dopiero po sprawdzeniu robot przemieszczany jest na ustalon± pozycjê.
+\begin{center}
   
-    \includegraphics[width=6 cm]{./grafika/OknoZarzadzaniaRobotami.png}
+    \includegraphics[width=6 cm]{dodatki/grafika/OknoZarzadzaniaRobotami.png}
 
-\end{figure}
+\end{center}
 
 
-\subsection{WyÅ›wietlanie i zapisywanie wynikÃ³w}
-Do wizualizacji i zapisu danych z eksperymentu przygotowane zostaÅ‚o okno $"$Wyniki symulacji$"$. Okno podzielone jest na zakÅ‚adki, w ktÃ³rych moÅ¼na otrzymaÄ‡ podglÄ…d trajektorii wszystkich robotÃ³w oraz przebiegi poÅ‚oÅ¼enia X, Y i orientacji. W pierwszej zakÅ‚adce sÄ… trasy przebyte przez wszystkie roboty a kaÅ¼da kolejna zakÅ‚adka odnosi siÄ™ do konkretnego robota prezentujÄ…c jego poÅ‚oÅ¼enie i orientacjÄ™. Przycisk $"$Reset danych$"$ pozwala wyczyÅ›ciÄ‡ wykresy i zaczÄ…Ä‡ zbieraÄ‡ je od nowa.  Okno daje moÅ¼liwoÅ›Ä‡ zapisania przebiegÃ³w do plikÃ³w, ktÃ³re znajdujÄ… siÄ™ potem w folderze /root/.  WaÅ¼ne jest teÅ¼ aby przed rozpoczÄ™ciem zbierania danych do konkretnego wykresu za pomocÄ… przycisku z dolnego paska Gazebo $"$PLAY/PAUSE$"$ zatrzymaÄ‡ czas symulacyjny nastÄ™pnie przyciskiem $"$Reset Time$"$ aby wykres byÅ‚ czytelny.
-\begin{figure}[hbt]
-  \setlength{\unitlength}{1.0cm}
-  \centering 
+\subsection{Wy¶wietlanie i zapisywanie wyników}
+Do wizualizacji i zapisu danych z eksperymentu przygotowane zosta³o okno $"$Wyniki symulacji$"$. Okno podzielone jest na zak³adki, w których mo¿na otrzymaæ podgl±d trajektorii wszystkich robotów oraz przebiegi po³o¿enia X, Y i orientacji. W pierwszej zak³adce s± trasy przebyte przez wszystkie roboty a ka¿da kolejna zak³adka odnosi siê do konkretnego robota prezentuj±c jego po³o¿enie i orientacjê. Przycisk $"$Reset danych$"$ pozwala wyczy¶ciæ wykresy i zacz±æ zbieraæ je od nowa.  Okno daje mo¿liwo¶æ zapisania przebiegów do plików, które znajduj± siê potem w folderze /root/.  Wa¿ne jest te¿ aby przed rozpoczêciem zbierania danych do konkretnego wykresu za pomoc± przycisku z dolnego paska Gazebo $"$PLAY/PAUSE$"$ zatrzymaæ czas symulacyjny nastêpnie przyciskiem $"$Reset Time$"$ aby wykres by³ czytelny.
+\begin{center}
+
+    \includegraphics[width=6 cm]{dodatki/grafika/Wykres.png}
+
+\end{center}
+
+\subsection{Wy¶wietlanie odczytów z czujników}
+Aby uzyskaæ dostêp do pomiarów z czujników nale¿y z paska narzêdzi Gazebo wybraæ zak³adkê $Window$ $>>$ $Topic$ $Visualization$. Uruchomi siê okno:
+\begin{center}
+
+    \includegraphics[width=6 cm]{dodatki/grafika/WizualizacjaLista.png}
+
+\end{center}
+
+Nastêpnie wybieramy topic czujnika, z którego chcemy wy¶wietlaæ dane. Dla skanera laserowego wykres wygl±da nastêpuj±co:
+
+\begin{center}
   
-    \includegraphics[width=6 cm]{./grafika/Wykres.png}
+    \includegraphics[width=8 cm]{dodatki/grafika/Skaner.png}
 
-\end{figure}
-
-\subsection{WyÅ›wietlanie odczytÃ³w z czujnikÃ³w}
-Aby uzyskaÄ‡ dostÄ™p do pomiarÃ³w z czujnikÃ³w naleÅ¼y z paska narzÄ™dzi Gazebo wybraÄ‡ zakÅ‚adkÄ™ $Window$ $>>$ $Topic$ $Visualization$. Uruchomi siÄ™ okno:
- \begin{figure}[hbt]
-  \setlength{\unitlength}{1.0cm}
-  \centering 
-  
-    \includegraphics[width=6 cm]{./grafika/WizualizacjaLista.png}
-
-\end{figure}
-
-NastÄ™pnie wybieramy topic czujnika, z ktÃ³rego chcemy wyÅ›wietlaÄ‡ dane. Dla skanera laserowego wykres wyglÄ…da nastÄ™pujÄ…co:
-
- \begin{figure}[hbt]
-  \setlength{\unitlength}{1.0cm}
-  \centering 
-  
-    \includegraphics[width=8 cm]{./grafika/Skaner.png}
-
-\end{figure}
+\end{center}
 \newpage
-\subsection{Dodawanie i edycja modeli przeszkÃ³d na scenie}
-Aby dodaÄ‡ przeszkodÄ™ na scenÄ™ naleÅ¼y z lewej strony ekranu wejÅ›Ä‡ w zakÅ‚adkÄ™ "Insert", wybraÄ‡ klikniÄ™ciem model i kliknÄ…Ä‡ na miejsce na scenie, w ktÃ³rym chcemy postawiÄ‡ przeszkodÄ™. Proste modele przeszkÃ³d dostÄ™pne sÄ… z paska narzÄ™dzi Gazabo. 
-Aby zmieniÄ‡ statycznoÅ›Ä‡ przeszkody naleÅ¼y kliknÄ…Ä‡ na niÄ… prawym przyciskiem myszy (PPM) a nastÄ™pnie z rozwiniÄ™tego menu wybraÄ‡ opcjÄ™ $"$Edit Model". Gazebo przejdzie do trybu edycji modelu. Wybieramy zakÅ‚adkÄ™ "Model" i zaznaczamy lub odznaczamy opcjÄ™ $"$Static":
+\subsection{Dodawanie i edycja modeli przeszkód na scenie}
+Aby dodaæ przeszkodê na scenê nale¿y z lewej strony ekranu wej¶æ w zak³adkê "Insert", wybraæ klikniêciem model i klikn±æ na miejsce na scenie, w którym chcemy postawiæ przeszkodê. Proste modele przeszkód dostêpne s± z paska narzêdzi Gazabo. 
+Aby zmieniæ statyczno¶æ przeszkody nale¿y klikn±æ na ni± prawym przyciskiem myszy (PPM) a nastêpnie z rozwiniêtego menu wybraæ opcjê $"$Edit Model". Gazebo przejdzie do trybu edycji modelu. Wybieramy zak³adkê "Model" i zaznaczamy lub odznaczamy opcjê $"$Static":
 
-\begin{figure}[hbt]
-  \setlength{\unitlength}{1.0cm}
-  \centering 
-  
-    \includegraphics[width=6 cm]{./grafika/Edit.png}
+\begin{center}
 
-\end{figure}
+    \includegraphics[width=6 cm]{dodatki/grafika/Edit.png}
+
+\end{center}
 
 
 
-\end{document}
+%\end{document}
  
