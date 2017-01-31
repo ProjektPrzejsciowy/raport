@@ -26,6 +26,15 @@ Oprogramowanie nale¿y zainstalowaæ zgodnie z instrukcj± przygotowan± dla wybrane
 \section{Obraz}
 \label{sec:obraz}
 Symulator mo¿na rozwijaæ lub modyfikowaæ, dziêki przygotowanemu obrazowi, który jest dostêpny na platformie \textbf{DockerHub} pod adresem \url{https://hub.docker.com/r/projektprzejsciowy2016/docker_lab/}. Sk³ada siê z systemu operacyjnego \textbf{Ubuntu Xenial 16.04 LTS}, systemu \textbf{ROS Kinetic} oraz \textbf{Gazebo 7.5} oraz pozosta³ych narzêdzi do komunikacji ROS-Gazebo. Je¿eli zaprezentowana konfiguracja jest akceptowalna przez dewelopera, nale¿y pobraæ obraz. W przeciwnym wypadku nale¿y zapoznaæ siê z rozdzialem \ref{sec:dockerfile}, w którym przedstawiono, jak przy pomocy pliku dockerfile mo¿na wygenerowaæ nowy obraz.
+\subsection{Struktura plików}
+W obrazie obowi±zuje standardowa dla systemów Linux struktura katalogów i plików. Jedynym katalogiem, którego dotycz± modyfikacje w ramach projektu jest katalog /root. Mo¿na wyró¿niæ w nim trzy g³ówne sk³adowe:
+\begin{itemize}
+	\item plik .bashrc
+	\item katalog .gazebo/
+	\item katalog catkin\_ws/
+\end{itemize}
+
+Plik .bashrc jest wykonywany przy ka¿dorazowym uruchomieniu shella. Dziêki temu, nie ma konieczno¶ci wykonywania poleceñ za ka¿dym razem, gdy uruchomiono obraz lub kontener - komendy wystarczy dodaæ do pliku. W punkcie \ref{sec:kon} podano, jakie komendy nale¿y dodaæ do pliku .bashrc do prawid³owej pracy symulatora.
 
 \section{Repozytoria}
 Do pracy nad symulatorem wymagane s± dwa repozytoria: \textbf{kod ¼ród³owy pluginu} zapewniaj±cego wszystkie funkcjonalno¶ci prezentowanego symulatora oraz \textbf{modele} obiektów wymaganych przez program Gazebo.\\
