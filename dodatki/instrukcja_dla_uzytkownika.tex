@@ -242,6 +242,16 @@ Aby zmieniæ statyczno¶æ przeszkody nale¿y klikn±æ na ni± prawym przyciskiem mysz
 
 \end{center}
 
+\section{Wykorzystanie pakietu RosAriaDrive}
+W ¶rodowisku symulacyjnym mo¿liwe jest równie¿ wykorzystanie pakietu \texttt{RosAriaDrive}, jest on dostêpny w module \texttt{drive\_simulation.py}. Modu³ ten jest zmodyfikowany w niewielkim stopniu wzglêdem orygina³u w celu zapewnienia spójno¶ci z symulatorem. W programie napisanym w jêzyku Python, mo¿na zaiportowaæ go przy pomocy wywo³ania nastêpuj±cego polecenia:
+\begin{verbatim}
+from drive_simulation import RosAriaDrive
+\end{verbatim} 
+po czym mo¿na korzystaæ z niego zgodnie z instrukcj± do pakietu \texttt{RosAriaDrive}. W celu pó¼niejszego wykorzystania programu, podczas pracy z rzeczywistym robotem w labolatorium L1.5 nale¿y zmieniæ nazwê modu³u z \texttt{drive\_simulation} na \texttt{drive}.
+
+Zalecane jest, aby program do sterowania robotem rozwijaæ w katalogu wspó³dzielonym z Dockerem, co pozwala miêdy innymi na u¿ycie swojego ulubionego edytora.
+
+
 
 
 %\end{document}
