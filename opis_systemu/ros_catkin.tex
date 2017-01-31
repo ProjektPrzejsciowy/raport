@@ -22,8 +22,7 @@ Jak zaznaczono wcze¶niej, mo¿liwe jest bezpo¶rednie u¿ycie systemu catkin do bud
 Po uruchomieniu, Gazebo tworzy w³asny wêze³ do komunikacji z ROS. Dziêki kompilacji poprzez catkin, pluginy Gazebo maj± dostêp do ROSa, bezpo¶rednio w kodzie mo¿emy odwo³ywaæ do jego funkcji. Aby siê o tym upewniæ, w World plugin umieszczono poni¿szy kod, który zatrzymuje dzia³anie Gazebo w przypadku braku komunikacji z ROS.
 
 \begin{lstlisting}[language=c]
-...
-// Make sure the ROS node for Gazebo has already been initialized                                                                                    
+...                                                                                   
 if ( !ros::isInitialized() )
 {
 	ROS_FATAL_STREAM("A ROS node for Gazebo has not been initialized");
@@ -37,11 +36,11 @@ Dziêki u¿yciu catkin'a mo¿emy uruchamiaæ Gazebo za pomoc± narzêdzia roslaunch, k
 \begin{verbatim}
 $ roslaunch projekt_przejsciowy l15.launch
 \end{verbatim}
-Aby to umo¿liwiæ, przygotowano odpowiedni plik l15.launch w podkatalogu stworzonego pakietu Gazebo $launch$. Plik launch mo¿e przy uruchomieniu zaczytywaæ plik world z konfiguracj± Gazebo lub umieszczaæ modele w odpowiednich miejscach.
+Aby to umo¿liwiæ, przygotowano odpowiedni plik l15.launch w podkatalogu stworzonego pakietu Gazebo $launch$. Plik launch mo¿e przy uruchomieniu wczytywaæ plik world z~konfiguracj± Gazebo lub umieszczaæ modele w odpowiednich miejscach.
 
 \subsection{Udostêpnione funkcjonalno¶ci do komunikacji ROS}
 Jak widaæ na Rysunku \ref{fig:ros_integracja}, Gazebo udostêpnia szereg funkcjonalno¶ci których mo¿na u¿yæ do integracji z ROS. 
 
-Dla projektu najwiêksze znaczenie mia³y pluginy wysy³aj±ce dane o czujnikach na robocie, takich jak IMU, skaner laserowy czy kamera oraz umo¿liwiaj±ce sterowanie napêdem robota. Zosta³y one zintegrowane z modelem Pioneera.
+Dla projektu najwiêksze znaczenie mia³y pluginy wysy³aj±ce dane z czujników na robocie, takich jak skaner laserowy czy kamera oraz umo¿liwiaj±ce sterowanie napêdem robota. Zosta³y one zintegrowane z modelem Pioneera.
 
-Wêze³ tworzony przez Gazebo publikuje informacje na zewn±trz za pomoc± tematów, np. ~/model\_states, wysy³aj±cy informacje o stanie modeli aktualnie u¿ywanych w symulacji. Wêze³ dostarcza równie¿ us³ugi ROS'a, jak ~/spawn\_urdf\_model do ³adowania modeli robotów w formacie URDF, czy ~/delete\_model do usuwania modeli. Mog± zostaæ one wykorzystane przez u¿ytkownika naszego systemu do kontroli symulacji i zbierania danych symulacyjnych.
+Wêze³ tworzony przez Gazebo publikuje informacje na zewn±trz za pomoc± tematów, np. \~/model\_states, wysy³aj±cy informacje o stanie modeli aktualnie u¿ywanych w symulacji. Wêze³ dostarcza równie¿ us³ugi ROS'a, takie jak \~/spawn\_urdf\_model do ³adowania modeli robotów w formacie URDF, czy \~/delete\_model do usuwania modeli. Mog± zostaæ one wykorzystane przez u¿ytkownika naszego systemu do kontroli symulacji i zbierania danych symulacyjnych.
