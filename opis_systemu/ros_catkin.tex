@@ -3,8 +3,8 @@ G³êboka integracja Gazebo z ROS jest najwiêksz± zalet± tego symulatora. Umo¿liwi
 Podstawowe funkcjonalno¶ci dostarczane razem z pakietem:
 \begin{itemize}
 \item pomimo integracji Gazebo pozostaje nadal samodzielnym systemem,
-\item mo¿liwo¶æ zbudowania pakietów Gazebo w catkin
-\item zmniejszenie ilo¶ci kodu potrzebnego do symulacji
+\item mo¿liwo¶æ zbudowania pakietów Gazebo w catkin,
+\item zmniejszenie ilo¶ci kodu potrzebnego do symulacji,
 \item udostêpnia u¿ytkownikowi szereg us³ug i tematów ROS do zarz±dzania symulacj± (wymienione na Rysunku \ref{fig:ros_integracja})
 \end{itemize}
 
@@ -17,9 +17,9 @@ Podstawowe funkcjonalno¶ci dostarczane razem z pakietem:
 \end{figure} 
 
 \subsection{Kompilacja pakietów Gazebo przy u¿yciu catkin}
-Jak zaznaczono wcze¶niej, mo¿liwe jest bezpo¶rednie u¿ycie systemu catkin do budowania pakietów napisanych dla Gazebo. Wymaga³o to stowrzenia catkin workspace - katalogu w którym budowane s± pakiety catkin. Stworzone przez nas pluginy Gazebo zosta³y zebrane i tak skonfigurowane, ¿e tworz± pakiet kompatybilny z ROS.
+Jak zaznaczono wcze¶niej, mo¿liwe jest bezpo¶rednie u¿ycie systemu catkin do budowania pakietów napisanych dla Gazebo. Wymaga³o to stworzenia catkin workspace -- katalogu, w którym budowane s± pakiety catkin. Stworzone przez nas pluginy Gazebo zosta³y zebrane i tak skonfigurowane, ¿e tworz± pakiet kompatybilny z ROS.
 
-Po uruchomieniu, Gazebo tworzy w³asny wêze³ do komunikacji z ROS. Dziêki kompilacji poprzez catkin, pluginy Gazebo maj± dostêp do ROS'a, bezpo¶rednio w kodzie mo¿emy odwo³ywaæ do jego funkcji. Aby siê o tym upewniæ, w World plugin umieszczono poni¿szy kod, który zatrzymuje dzia³anie Gazebo w przypadku braku komunikacji z ROS.
+Po uruchomieniu, Gazebo tworzy w³asny wêze³ do komunikacji z ROS. Dziêki kompilacji poprzez catkin, pluginy Gazebo maj± dostêp do ROSa, bezpo¶rednio w kodzie mo¿emy odwo³ywaæ do jego funkcji. Aby siê o tym upewniæ, w World plugin umieszczono poni¿szy kod, który zatrzymuje dzia³anie Gazebo w przypadku braku komunikacji z ROS.
 
 \begin{lstlisting}[language=c]
 ...
@@ -33,7 +33,7 @@ if ( !ros::isInitialized() )
 \end{lstlisting}
 
 \subsection{Uruchamianie Gazebo przy u¿yciu narzêdzi z ROS}
-Dziêki u¿yciu catkin'a mo¿emy uruchamiaæ Gazebo za pomoc± narzêdzia roslaunch, które pozwala automatycznie wywo³ywanie wêz³ów ROS oraz wstêpn± konfiguracjê. U³atwia to start skonfigurowanego do pracy ¶rodowiska, co sprowadza siê do jednego polecenia:
+Dziêki u¿yciu catkin'a mo¿emy uruchamiaæ Gazebo za pomoc± narzêdzia roslaunch, które pozwala na automatyczne wywo³ywanie wêz³ów ROS oraz wstêpn± konfiguracjê. U³atwia to start skonfigurowanego do pracy ¶rodowiska, co sprowadza siê do jednego polecenia:
 \begin{verbatim}
 $ roslaunch projekt_przejsciowy l15.launch
 \end{verbatim}
