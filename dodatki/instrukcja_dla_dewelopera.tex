@@ -35,33 +35,40 @@ Modele obiektów znajduj± siê pod adresem \url{https://github.com/ProjektPrzejsci
 \section{Uruchamianie obrazu i konfiguracja}
 \label{sec:kon}
 Przed uruchomieniem obrazu nale¿y zezwoliæ na pracê obrazu Dockera z X serwerem poleceniem:
-\begin{itemize}
-	\item xhost +
-\end{itemize}
+\begin{verbatim}
+xhost +
+\end{verbatim}
 
 Obraz nale¿y uruchomiæ przy pomocy komendy:
-\begin{itemize}
-\item docker run -it -e DISPLAY=unix\$DISPLAY -v=/tmp/.X11-unix:/tmp/.X11-unix:rw -v$[$scie¿ka\_do\_katalogu\_lokalnego$]:[$scie¿ka\_gdzie\_ma\_byæ\_montowany\_w\_obrazie$]$ $[$nazwa obrazu$]$
-\end{itemize}
+\begin{verbatim}
+docker run -it -e DISPLAY=unix$DISPLAY -v=/tmp/.X11-unix:/tmp/.X11-unix:rw \
+-v [scie¿ka do katalogu lokalnego]:/root/catkin_ws/src/projekt_przejsciowy \
+[nazwa obrazu]
+\end{verbatim}
 
-W miejscu $[$scie¿ka\_do\_katalogu\_lokalnego$]$ nale¿y podaæ ¶cie¿kê do katalogu z pobranym kodem ¼ród³owym pluginu, za $[$scie¿ka\_gdzie\_ma\_byæ\_montowany\_w\_obrazie$]$ nale¿y podstawiæ: /root/catkin\_ws/src/projekt\_przejsciowy
+W miejsce $[$scie¿ka do katalogu lokalnego$]$ nale¿y podaæ ¶cie¿kê do katalogu z pobranym kodem ¼ród³owym pluginu. W przypadku korzystania z przygotowanego obrazu w wersji deweloperskiej  w miejsce [nazwa obrazu] nale¿y podstawiæ:
+\begin{verbatim}
+projektprzejsciowy2016/docker_lab:latest
+\end{verbatim}
 
-W analogiczny sposób przy pomocy opcji -v mo¿na wspó³dzieliæ dowolny katalog z kontenerem Dockera.
+W analogiczny sposób przy pomocy opcji -v mo¿na wspó³dzieliæ dowolny katalog z~kontenerem Dockera.
 
-Nastêpnie, pracuj±c ju¿ w kontenerze wywo³anego obrazu nale¿y dodaæ w pliku /root/.bashrc :
-\begin{itemize}
-	\item export GAZEBO\_PLUGIN\_PATH=/root/catkin\_ws/devel/lib/
-	\item source \~/catkin\_ws/devel/setup.bash
-\end{itemize} 
+Nastêpnie, nale¿y upewniæ siê, ¿e plik /root/.bashrc/ w obrazie zawiera nastêpuj±ce linie:
+\begin{verbatim}
+export GAZEBO_PLUGIN_PATH=/root/catkin_ws/devel/lib/
+source ~/catkin_ws/devel/setup.bash
+\end{verbatim}
 
-Je¿eli obraz nie zawiera³ modeli wymaganych przez Gazebo to nale¿y dodaæ je do katalogu /root/.gazebo/ np. pobieraj±c je z repozytorium.
+Pierwsza linia odpowiada za do³±czenie pluginu do Gazebo. Je¿eli po uruchomieniu Gazebo plugin jest niewidoczny, ¶wiadczy to o braku linii we wspomnianym pliku lub nie skompilowaniu plików ¼ród³owych pluginu w katalogu /root/catkin\_ws/. Druga linia odpowiada za widoczno¶æ przygotowanych pakietów i mo¿liwo¶æ uruchamiania ich z dowolnej lokalizacji w terminalu. Je¿eli przygotowane pakiety s± niewidoczne w terminalu, nale¿y sprawdziæ czy plik /root/.bashrc zawiera t± liniê i czy pakiet zosta³ zbudowany w~katalogu /root/catkin\_ws/.
+
+Je¿eli obraz nie zawiera³ modeli wymaganych przez Gazebo to nale¿y dodaæ je do katalogu /root/.gazebo/models/ np. pobieraj±c je z repozytorium.
 
 Przed uruchomieniem symulatora nale¿y skompilowaæ plugin poleceniem:
-\begin{itemize}
-	\item cd /root/catkin\_ws/
-	\item catkin\_make
-\end{itemize}
+\begin{verbatim}
+cd /root/catkin_ws/
+catkin_make
+\end{verbatim}
 
 \section{Dockerfile}
 \label{sec:dockerfile}
-Pod adresem \url{https://github.com/ProjektPrzejsciowy/docker} dostêpne s± pliki Dockerfile, które umo¿liwiaj± wygenerowanie nowego obrazu dla wersji deweloperskiej i testowej/finalnej. Na ich podstawie mo¿na wygenerowaæ w³asne obrazy, które nastêpnie mo¿na umie¶ciæ na platformie \textbf{DockerHub}.
+Pod adresem \url{https://github.com/ProjektPrzejsciowy/docker} dostêpne s± pliki Dockerfile, które umo¿liwiaj± wygenerowanie nowego obrazu dla wersji deweloperskiej i~testowej/finalnej. Na ich podstawie mo¿na wygenerowaæ w³asne obrazy, które nastêpnie mo¿na umie¶ciæ na platformie \textbf{DockerHub}.
