@@ -4,14 +4,15 @@ W ramach testów systemu przygotowano ¶rodowisko zgodnie z instrukcj± u¿ytkownika
 
 W pierwszej kolejno¶ci sprawdzono poprawno¶æ wczytywania siê modelu laboratorium, oraz umieszczania i chowania robotów ze sceny, test ten wypad³ pomy¶lnie.
 Kolejnym wa¿nym aspektem jest to czy w systemie ROS, po dodaniu robota pojawiaj± siê odpowiednie tematy. Dla robota 'pioneer\_1' s± one nastêpuj±ce:
+
 \begin{itemize}
-\item /pioneer\_1/RosAria/cmd\_vel
-\item /pioneer\_1/RosAria/pose
-\item /pioneer\_1/camera/camera\_info
-\item /pioneer\_1/camera/image\_raw
-\item /pioneer\_1/camera/parameter\_descriptions
-\item /pioneer\_1/camera/parameter\_updates
-\item /pioneer\_1/scan
+\item \begin{verbatim}/pioneer_1/RosAria/cmd_vel\end{verbatim}
+\item \begin{verbatim}/pioneer_1/RosAria/pose \end{verbatim}
+\item \begin{verbatim}/pioneer_1/camera/camera_info\end{verbatim}
+\item \begin{verbatim}/pioneer_1/camera/image_raw\end{verbatim}
+\item \begin{verbatim}/pioneer_1/camera/parameter_descriptions\end{verbatim}
+\item \begin{verbatim}/pioneer_1/camera/parameter_updates\end{verbatim}
+\item \begin{verbatim}/pioneer_1/scan\end{verbatim}
 \end{itemize}
 
 
@@ -27,14 +28,36 @@ Nastêpnie sprawdzono mo¿liwo¶æ zarz±dzania pozycj± robotów z poziomu okienka 'Za
 
 Ostatni± grup± funkcjonalno¶ci jest mo¿liwo¶æ rejestracji pozycji robota i zapisanie jej do pliku. W celu jej weryfikacji do systemu ROS opublikowano dwie wiadomo¶ci,  które w efekcie powinny umo¿liwiæ narysowanie robotem ósemki:
 \begin{itemize}
-\item rostopic pub /pioneer\_1/RosAria/cmd\_vel geometry\_msgs/Twist - - '[0.5, 0.0, 0.0]' '[0.0, 0.0, 0.2]'
-\item rostopic pub /pioneer\_1/RosAria/cmd\_vel geometry\_msgs/Twist - - '[0.5, 0.0, 0.0]' '[0.0, 0.0, -0.3]'
+\item \begin{verbatim}rostopic pub /pioneer_1/RosAria/cmd_vel \
+geometry_msgs/Twist -- '[0.5, 0.0, 0.0]' '[0.0, 0.0, 0.2]' \end{verbatim}
+\item \begin{verbatim}rostopic pub /pioneer_1/RosAria/cmd_vel \
+geometry_msgs/Twist -- '[0.5, 0.0, 0.0]' '[0.0, 0.0, -0.3]' \end{verbatim}
 \end{itemize}
 
 Po wykonaniu powy¿szych poleceñ robot pokona³ zamierzon± trasê, a otrzymane wykresy ruchu zgadza³y siê z rzeczywisto¶ci±.
 
 \begin{figure}[htbp]
  \centering
- \includegraphics[width=0.7\textwidth]{testy/test3.png}
+ \includegraphics[width=0.6\textwidth]{testy/test3.png}
+ \label{fig:docker}
+\end{figure}
+
+
+\section{Przygotowanie do laboratorium}
+
+W celu sprawdzenia mo¿liwo¶ci korzystania z modu³u RosAriaDriver, napisano prosty program umo¿liwiaj±cy poruszanie siê po kwadracie, z wykorzystaniem napisanej w Pythonie biblioteki drive\_simulation.py dostêpnej w przygotowanym kontenerze dockera.
+\begin{verbatim}
+from drive_simulation import RosAriaDriver
+p = RosAriaDriver('pioneer_1')
+for i in range(4):
+    p.SetSpeedLR(0.2, 0.2, 5)
+    p.SetSpeed(0, 0.2, 5)
+\end{verbatim}
+
+W ten sposób uda³o siê uzyskaæ przejazd po ¶cie¿ce przypominaj±cej kwadrat.
+
+\begin{figure}[htbp]
+ \centering
+ \includegraphics[width=0.6\textwidth]{testy/test4.png}
  \label{fig:docker}
 \end{figure}
