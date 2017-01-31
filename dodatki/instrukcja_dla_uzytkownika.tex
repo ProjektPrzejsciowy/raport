@@ -51,7 +51,7 @@
 
 \section{Wstêp}
 \label{sec:wstep} % definicja etykiety rozdzia³u
-W niniejszej instrukcji znajduje siê opis czynno¶ci potrzebnych do uruchomienia i u¿ytkowania systemu wirtualnego laboratorium.
+W niniejszej instrukcji znajduje siê opis czynno¶ci potrzebnych do uruchomienia i~u¿ytkowania systemu wirtualnego laboratorium.
 
 \section{Przygotowanie systemu do uruchomienia}
 \label{sec:przygotowanie}
@@ -105,11 +105,15 @@ projektprzejsciowy2016/docker_lab_beta:latest
 W przypadku gdy potrzebujemy wspó³dzieliæ pewne katalogi lokalne z Dockerem nale¿y  w poleceniu uruchamiaj±cym obraz systemu $"$docker run$"$ skorzystaæ z opcji -v:
 \begin{verbatim}
 docker run -it -e DISPLAY=unix$DISPLAY -v=/tmp/.X11-unix:/tmp/.X11-unix:rw \
--v[scie¿ka_do_katalogu_lokalnego]:[scie¿ka_gdzi_ma_byæ_montowany_w_obrazie]\
+-v [scie¿ka_do_katalogu_lokalnego]:[scie¿ka_gdzie_ma_byæ_montowany_w_obrazie] \
  projektprzejsciowy2016/docker_lab_beta:latest
 
 \end{verbatim}
 
+Sugerowan± ¶cie¿k± umieszczania wspó³dzielonego folderu w kontenerze jest
+\begin{verbatim}
+/root/catkin_ws/src/[nazwa_katalogu]
+\end{verbatim}
 
 System ROS wraz z symulatorem - Gazebo, uruchamiany jest poleceniem wykonywanym ju¿ z poziomu obrazu Dockera:
 \begin{verbatim}
@@ -123,7 +127,7 @@ Po chwili powinien uruchomiæ siê symulator Gazebo:
     \includegraphics[width=12 cm]{dodatki/grafika/EkranGlowny.png}
 
 \end{center}
- Aby przetestowaæ czy wszystko dzia³a poprawnie nale¿y dodaæ na scenê robota jak w puncie 3.2.
+Aby przetestowaæ, czy wszystko dzia³a poprawnie, nale¿y dodaæ na scenê robota jak w puncie A.3.2.
 
 
 Je¶li potrzebujemy uruchomiæ drug± konsolê dzia³aj±c± na tym samym kontenerze to nale¿y uruchomiæ drug± konsolê (mo¿na to wykonaæ skrótem klawiszowym $"$shitf$"$+$"$ctrl$"$+$"$t$"$, a nastêpnie sprawdzamy nazwê kontenera, który mamy ju¿ uruchomiony:
@@ -150,7 +154,7 @@ docker exec -it Nazwa_Kontenera bash
 \end{verbatim}
 
 
-Uruchamiaj±c kontener po raz kolejny mamy mo¿liwo¶æ zachowania historii wykorzystywanych poleceñ. Przy uruchamianiu kontenera odwo³ujemy siê do ostatniego otwieranego dockera:
+Uruchamiaj±c kontener po raz kolejny mamy mo¿liwo¶æ zachowania historii wykorzystywanych poleceñ. Przy uruchamianiu kontenera odwo³ujemy siê do ostatniego otwieranego Dockera:
 \begin{verbatim}
 docker start -i $(docker ps -q -l)
 \end{verbatim}
