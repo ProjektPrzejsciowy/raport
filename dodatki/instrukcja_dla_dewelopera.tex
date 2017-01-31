@@ -1,7 +1,7 @@
 \chapter{Instrukcja dla dewelopera}
 \section{Wstêp}
 
-W niniejszej instrukcji znajduje siê opis wstêpnych czynno¶ci wymaganych do dalszego rozwoju symulatora. Prezentuje konfiguracjê narzêdzi, ¶rodowiska oraz obrazu a tak¿e automatyzacjê procesu budowy obrazu dla wersji deweloperskiej oraz testowej/finalnej przy pomocy pliku Dockerfile.\\
+W niniejszej instrukcji znajduje siê opis wstêpnych czynno¶ci wymaganych do dalszego rozwoju symulatora. Prezentuje konfiguracjê narzêdzi, ¶rodowiska oraz obrazu a tak¿e automatyzacjê procesu budowy obrazu dla wersji deweloperskiej oraz testowej/finalnej przy pomocy pliku dockerfile.\\
 Instrukcja opisuje stan na styczeñ 2017 roku, przez co informacje w niej zawarte mog± byæ nieaktualne. Dotyczy to systemów operacyjnych wspieraj±cych Dockera, dostêpnej wersji ROS'a oraz Gazebo, a tak¿e API, z którego korzystano.  
 %
 \section{System operacyjny}
@@ -25,11 +25,11 @@ Oprogramowanie nale¿y zainstalowaæ zgodnie z instrukcj± przygotowan± dla wybrane
 
 \section{Obraz}
 \label{sec:obraz}
-Symulator mo¿na rozwijaæ lub modyfikowaæ, dziêki przygotowanemu obrazowi, który jest dostêpny na platformie \textbf{DockerHub} pod adresem \url{https://hub.docker.com/r/projektprzejsciowy2016/docker_lab/}. Sk³ada siê z systemu operacyjnego \textbf{Ubuntu Xenial 16.04 LTS}, systemu \textbf{ROS Kinetic} oraz \textbf{Gazebo 7.5} oraz pozosta³ych narzêdzi do komunikacji ROS-Gazebo. Je¿eli zaprezentowana konfiguracja jest akceptowalna przez dewelopera, nale¿y pobraæ obraz. W przeciwnym wypadku nale¿y zapoznaæ siê z rozdzialem \ref{sec:dockerfile}, w którym przedstawiono, jak przy pomocy pliku Dockerfile mo¿na wygenerowaæ nowy obraz.
+Symulator mo¿na rozwijaæ lub modyfikowaæ, dziêki przygotowanemu obrazowi, który jest dostêpny na platformie \textbf{DockerHub} pod adresem \url{https://hub.docker.com/r/projektprzejsciowy2016/docker_lab/}. Sk³ada siê z systemu operacyjnego \textbf{Ubuntu Xenial 16.04 LTS}, systemu \textbf{ROS Kinetic} oraz \textbf{Gazebo 7.5} oraz pozosta³ych narzêdzi do komunikacji ROS-Gazebo. Je¿eli zaprezentowana konfiguracja jest akceptowalna przez dewelopera, nale¿y pobraæ obraz. W przeciwnym wypadku nale¿y zapoznaæ siê z rozdzialem \ref{sec:dockerfile}, w którym przedstawiono, jak przy pomocy pliku dockerfile mo¿na wygenerowaæ nowy obraz.
 
 \section{Repozytoria}
 Do pracy nad symulatorem wymagane s± dwa repozytoria: \textbf{kod ¼ród³owy pluginu} zapewniaj±cego wszystkie funkcjonalno¶ci prezentowanego symulatora oraz \textbf{modele} obiektów wymaganych przez program Gazebo.\\
-Kod ¼ród³owy pluginu nale¿y pobraæ lokalnie. Dostêpny jest pod adresem \url{https://github.com/ProjektPrzejsciowy/projekt_przejsciowy}. Repozytorium bêdzie dostêpne w obrazie za pomoc± mechanizmu wspó³dzielenia katalogów. Dziêki temu deweloper mo¿e pracowaæ z pluginem lokalnie, korzystaj±c z wybranego IDE a wszystkie zmiany s± widoczne z poziomu kontenera. Informacjê o tym, jak wspó³dzieliæ katalog z obrazem Dockera umieszczono w podpunkcie \ref{sec:kon}.\\
+Kod ¼ród³owy pluginu nale¿y pobraæ lokalnie. Dostêpny jest pod adresem \url{https://github.com/ProjektPrzejsciowy/projekt_przejsciowy}. Repozytorium bêdzie dostêpne w obrazie za pomoc± mechanizmu wspó³dzielenia katalogów. Dziêki temu deweloper mo¿e pracowaæ z pluginem lokalnie, korzystaj±c z wybranego IDE a wszystkie zmiany bêd± widoczne z poziomu kontenera. Informacjê o tym, jak wspó³dzieliæ katalog z obrazem Dockera umieszczono w podpunkcie \ref{sec:kon}.\\
 Modele obiektów znajduj± siê pod adresem \url{https://github.com/ProjektPrzejsciowy/models}. Obraz zaprezentowany w podpunkcie \ref{sec:obraz} zawiera ju¿ wymagane modele, zatem nie trzeba ich ponownie dodawaæ. Je¿eli obraz pozyskano z innego ¼ród³a, nale¿y ka¿dy utworzony kontener uzupe³niæ o modele. Informacja o tym, jak dodaæ modele do kontenera umieszczono w podpunkcie \ref{sec:kon}.
 
 \section{Uruchamianie obrazu i konfiguracja}
@@ -46,7 +46,9 @@ docker run -it -e DISPLAY=unix$DISPLAY -v=/tmp/.X11-unix:/tmp/.X11-unix:rw \
 [nazwa obrazu]
 \end{verbatim}
 
-W miejsce $[$scie¿ka do katalogu lokalnego$]$ nale¿y podaæ ¶cie¿kê do katalogu z pobranym kodem ¼ród³owym pluginu. W przypadku korzystania z przygotowanego obrazu w wersji deweloperskiej  w miejsce [nazwa obrazu] nale¿y podstawiæ:
+W miejsce $[$scie¿ka do katalogu lokalnego$]$ nale¿y podaæ ¶cie¿kê do katalogu z pobranym kodem ¼ród³owym pluginu. 
+
+W przypadku korzystania z przygotowanego obrazu w wersji deweloperskiej  w miejsce [nazwa obrazu] nale¿y podstawiæ:
 \begin{verbatim}
 projektprzejsciowy2016/docker_lab:latest
 \end{verbatim}
@@ -71,4 +73,4 @@ catkin_make
 
 \section{Dockerfile}
 \label{sec:dockerfile}
-Pod adresem \url{https://github.com/ProjektPrzejsciowy/docker} dostêpne s± pliki Dockerfile, które umo¿liwiaj± wygenerowanie nowego obrazu dla wersji deweloperskiej i~testowej/finalnej. Na ich podstawie mo¿na wygenerowaæ w³asne obrazy, które nastêpnie mo¿na umie¶ciæ na platformie \textbf{DockerHub}.
+Pod adresem \url{https://github.com/ProjektPrzejsciowy/docker} dostêpne s± pliki dockerfile, które umo¿liwiaj± wygenerowanie nowego obrazu dla wersji deweloperskiej i~testowej/finalnej. Na ich podstawie mo¿na wygenerowaæ w³asne obrazy, które nastêpnie mo¿na umie¶ciæ na platformie \textbf{DockerHub}.
