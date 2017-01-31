@@ -1,7 +1,7 @@
 \section{Modele}
 
 Modele u¿yte do stworzenia laboratorium L1.5 zosta³y wykonane w programach Inventor Professional oraz Blender.
-Elementy wyposa¿enia wnêtrza takie jak sto³y, krzes³a, grzejniki, szafa oraz ¶mietnik zaprojektowane zosta³y w Inventorze, natomiast sama sala (¶ciany) w programie Blender. Wszystkie stworzone elementy opracowane zosta³y w oparciu o pomiary rzeczywistych mebli, przedmiotów i ¶cian w sali L1.5 w budynku C-16. Nastêpnie wszystkie elementy zosta³y przekonwertowane przy u¿yciu programu Blender do formatu Collada (.dae), aby mo¿liwe by³o wykorzystanie ich w Gazebo.
+Elementy wyposa¿enia wnêtrza takie jak: sto³y, krzes³a, grzejniki, szafa oraz ¶mietnik zaprojektowane zosta³y w Inventorze, natomiast sama sala (¶ciany) w programie Blender. Wszystkie stworzone elementy opracowane zosta³y w oparciu o pomiary rzeczywistych mebli, przedmiotów i ¶cian w sali L1.5 w budynku C-16. Nastêpnie wszystkie elementy zosta³y przekonwertowane przy u¿yciu programu Blender do formatu Collada (.dae), aby mo¿liwe by³o wykorzystanie ich w Gazebo.
 
 Modele zosta³y równie¿ posk³adane w Blenderze w celu wyrenderowania widoków z~ró¿nych miejsc sali:
 
@@ -14,26 +14,29 @@ Modele zosta³y równie¿ posk³adane w Blenderze w celu wyrenderowania widoków z~ró
 \end{center}
 
 Aby stworzone modele mog³y byæ u¿yte w Gazebo, konieczne by³o napisanie plików konfiguracyjnych ,,model.config" oraz ,,model.sdf".
-\\
+
 Plik ,,model.config" zawiera informacje takie jak:
 \begin{itemize}
 \item nazwa obiektu
 \item lista wersji pliku .sdf
 \item informacje o autorze
 \end{itemize}
-W pliku ,,model.sdf" przechowywane s± informacje na temat:
+
+W pliku ,,model.sdf'' przechowywane s± informacje na temat:
 \begin{itemize}
-\item w³a¶ciwo¶ci fizycznych obiektu (masa, momenty bezw³adno¶ci)
-\item statyczno¶ci obiektu (mo¿liwo¶ci poruszenia przez inny obiekt)
-\item geometrii obiektu wykorzystywanej przy kolizji z innymi obiektami
-\item wizualizacji obiektu w symulacji
+\item w³a¶ciwo¶ci fizycznych obiektu (masa, momenty bezw³adno¶ci),
+\item statyczno¶ci obiektu (mo¿liwo¶ci poruszenia przez inny obiekt),
+\item geometrii obiektu wykorzystywanej przy kolizji z innymi obiektami,
+\item wizualizacji obiektu w symulacji.
 \end{itemize}
-W przypadku modeli z³o¿onych, takich jak roboty, plik ,,model.sdf" mo¿e zawieraæ równie¿:
+
+W przypadku modeli z³o¿onych, takich jak roboty, plik ,,model.sdf'' mo¿e zawieraæ równie¿:
 \begin{itemize}
-\item informacje o w³a¶ciwo¶ciach fizycznych poszczególnych cz³onów obiektu
-\item parametry po³±czeñ kinematycznych miêdzy cz³onami
-\item pluginy wykorzystywane w modelu
-\item dane o czujnikach i ich umieszczeniu
+\item informacje o w³a¶ciwo¶ciach fizycznych poszczególnych cz³onów obiektu,
+\item parametry po³±czeñ kinematycznych miêdzy cz³onami,
+\item pluginy wykorzystywane w modelu,
+\item dane o czujnikach i ich umieszczeniu.
 \end{itemize}
+
 Do stworzenia modelu robota Pioneer wykorzystano pliki zawarte w Gazebo, jednak aby mo¿na by³o go u¿yæ w symulacjach konieczne by³o zaimplementowanie jego funkcjonalno¶ci w pliku .sdf. W tym celu dodano do modelu pluginy do obs³ugi napêdów oraz sensorów.
 Dziêki tym zabiegom, po dodaniu robota w trakcie symulacji, tworzone s± ROS'owe tematy pozwalaj±ce na komunikacjê z modelem robota.

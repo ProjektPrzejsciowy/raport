@@ -21,7 +21,7 @@ Z wykorzystaniem pluginu GUI i bibliotek Qt utworzona zosta³a w górnej czê¶ci ok
 
 Wtyczka interfejsu ma ograniczony dostêp do zasobów Gazebo. Chc±c z jej pomoc± dokonywaæ modyfikacji na scenie konieczne jest wysy³anie odpowiednich komend do pluginu World. W tym celu w projekcie wykorzystano komunikacjê za pomoc± tematów symulatora. Wtyczka GUI pe³ni rolê nadawcy (publisher), natomiast wtyczka World jest subskrybentem (subscriber). Wiadomo¶ci mog± mieæ dowolny, wcze¶niej zdefiniowany format. Przyk³adowo, je¿eli wysy³ane s± informacje o pozycji robota, format wiadomo¶ci zawiera nazwê modelu i sze¶æ zmiennych liczbowych przechowuj±cych pozycjê i orientacjê.
 
-Tworzenie tematów i konfiguracja komunikacji realizowana jest z poziomu kodu, z wykorzystaniem bibliotek Gazebo.
+Tworzenie tematów i konfiguracja komunikacji realizowana jest z poziomu kodu, z~wykorzystaniem bibliotek Gazebo.
 
 \subsection{World}
 World plugin pozwala na edycjê ró¿nych parametrów ¶wiata, przyk³adowo silnika fizyki lub o¶wietlenia. Ponadto umo¿liwia modyfikowanie sceny i znajduj±cych siê na niej obiektów. Wtyczka jest bezpo¶rednio zwi±zana z plikiem ustawieñ z rozszerzeniem .world, ³adowanym podczas uruchamiania Gazebo. Ten plik jest równie¿ odpowiedzialny za uruchomienie wybranej wtyczki:
