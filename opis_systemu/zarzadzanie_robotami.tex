@@ -2,11 +2,9 @@
 \subsection{Zarz±dzanie robotami}
 Okienko \texttt{Zarz±dzanie robotami} umo¿liwia ustawianie pozycji oraz orientacji wybranego robota na scenie.
 
-Zak³adki umo¿liwiaj± wybór \texttt{Pioneera}, którego pozycjê chcemy zmieniæ. Aktywne s± tylko zak³adki skojarzone z~robotami dodanymi aktualnie do ¶wiata. 
-
+Zak³adki umo¿liwiaj± wybór Pioneera, którego pozycjê chcemy zmieniæ. Aktywne s± tylko zak³adki skojarzone z~robotami dodanymi aktualnie do ¶wiata. 
 Po wyborze zak³adki mo¿liwe jest podanie nowych wspó³rzêdnych $XY$ oraz orientacji $\theta$ robota. W~polach odpowiedzialnych za pozycjê i~orientacjê kolor informuje o~poprawno¶ci wprowadzonych danych -- zielony oznacza poprawnie wype³nione pola, natomiast czerwony b³êdnie. 
-
-Przyci¶niêcie przycisku \texttt{Ustaw} powoduje ustawienie \texttt{Pioneera} zgodnie z~¿±daniem. Przycisk \texttt{Reset} przenosi robota do punktu $(0, 0)$ i~ustawia jego orientacjê na~$0$. 
+Przyci¶niêcie przycisku \texttt{Ustaw} powoduje ustawienie Pioneera zgodnie z~¿±daniem. Przycisk \texttt{Reset} przenosi robota do punktu $(0, 0)$ i~ustawia jego orientacjê na~$0$. 
 
 Po zmianie zak³adki lub ustawieniu/zresetowaniu pozycji, w~polach wy¶wietlane s± aktualne wspó³rzêdne robota.
 
@@ -20,7 +18,7 @@ Po zmianie zak³adki lub ustawieniu/zresetowaniu pozycji, w~polach wy¶wietlane s±
 \subsubsection{Implementacja}
 Klasa odpowiadaj±ca za ca³e okienko to \texttt{RobotManagementWindow}. Dziedziczy ona po klasie \texttt{QDialog}. 
 
-Sloty odpowiadaj±ce za to co dzieje siê w~oknie w~momencie dodania lub schowania robota to:
+Sloty odpowiadaj±ce za to, co dzieje siê w~oknie w~momencie dodania lub schowania robota, to:
 \begin{lstlisting}[language=C++, numbers=none]
 public slots:
 	void onAddRobot(int id);
@@ -28,13 +26,13 @@ public slots:
 \end{lstlisting}
 W~momencie otrzymania odpowiednich sygna³ów aktywowana b±d¼ dezaktywowana jest stosowna zak³adka, a~tak¿e ustawiane s± warto¶ci w~polach.
 
-Wy¶wietlanie pozycji i~orientacji robota mo¿liwe jest dziêki subskrybowaniu odpowiedniego tematu i~wywo³aniu funkcji aktualizuj±cej pozycjê robota:
+Wy¶wietlanie pozycji i~orientacji robota jest mo¿liwe dziêki subskrybowaniu odpowiedniego tematu i~wywo³aniu funkcji aktualizuj±cej pozycjê robota:
 \begin{lstlisting}[language=C++, numbers=none]
 this->sub = node->Subscribe("~/pose/info", 
                             &RobotManagementWindow::OnPoseMsg, this);
 \end{lstlisting}
 
-Klasa odpowiadaj±ca za wygl±d  pojedynczej zak³adki oraz g³ówn± funkcjonalno¶æ okienka to \texttt{RobotManagementTab}. Dziedziczy ona po klasie \texttt{QWidget}. Jej kluczowe metody to:
+Klasa odpowiadaj±ca za wygl±d pojedynczej zak³adki oraz g³ówn± funkcjonalno¶æ okienka to \texttt{RobotManagementTab}. Dziedziczy ona po klasie \texttt{QWidget}. Jej kluczowe metody to:
 \begin{lstlisting}[language=C++, numbers=none]
 private slots:
 	void on_pushButtonUstaw_clicked();
