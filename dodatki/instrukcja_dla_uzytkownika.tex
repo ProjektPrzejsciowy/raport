@@ -62,14 +62,14 @@ https://docs.docker.com/engine/installation/linux/ubuntu/
 \end{verbatim}
 
 
-Aby nie musieæ za ka¿dym razem u¿ywaæ $sudo$ w poleceniach dotycz±cych Dockera nale¿y po zakoñczeniu instalacji wykonaæ polecenie:
+Aby nie by³o konieczno¶ci za ka¿dym razem u¿ywaæ $sudo$ w poleceniach dotycz±cych Dockera nale¿y po zakoñczeniu instalacji wykonaæ polecenie:
 \begin{verbatim}
 sudo usermod -aG docker [nazwa twojego u¿ytkownika] 
 \end{verbatim}
 
 i potwierdziæ has³em u¿ytkownika. 
 
-Nastêpnie nale¿y pobraæ na dysk lokalny obraz systemu znajduj±cy siê w repozytorium DockerHub. Nale¿y pobraæ najnowszy obraz wersji beta o nazwie :
+Nastêpnie nale¿y pobraæ na dysk lokalny obraz systemu znajduj±cy siê w repozytorium DockerHub. Nale¿y pobraæ najnowszy obraz wersji beta o nazwie:
 \begin{verbatim}
 projektprzejsciowy2016$/docker_lab_beta:latest
 \end{verbatim}
@@ -110,7 +110,7 @@ docker run -it -e DISPLAY=unix$DISPLAY -v=/tmp/.X11-unix:/tmp/.X11-unix:rw \
 
 \end{verbatim}
 
-Sugerowan± ¶cie¿k± umieszczania wspó³dzielonego folderu w kontenerze jest
+Sugerowan± ¶cie¿k± umieszczania wspó³dzielonego folderu w kontenerze jest:
 \begin{verbatim}
 /root/catkin_ws/src/[nazwa_katalogu]
 \end{verbatim}
@@ -130,14 +130,14 @@ Po chwili powinien uruchomiæ siê symulator Gazebo:
 Aby przetestowaæ, czy wszystko dzia³a poprawnie, nale¿y dodaæ na scenê robota jak w puncie A.3.2.
 
 
-Je¶li potrzebujemy uruchomiæ drug± konsolê dzia³aj±c± na tym samym kontenerze to nale¿y uruchomiæ drug± konsolê (mo¿na to wykonaæ skrótem klawiszowym $"$shitf$"$+$"$ctrl$"$+$"$t$"$, a nastêpnie sprawdzamy nazwê kontenera, który mamy ju¿ uruchomiony:
+Je¶li potrzebujemy uruchomiæ drugi terminal dzia³aj±cy na tym samym kontenerze to nale¿y uruchomiæ drugie okno z terminalem (mo¿na to wykonaæ skrótem klawiszowym \texttt{Shitf + Ctrl + T} lub \texttt{Ctrl + Alt + T}), a nastêpnie sprawdzamy nazwê kontenera, o którego chcemy siê po³±czyæ:
 
  \begin{verbatim}
 docker ps -a
 \end{verbatim}
 
 
-Powy¿sze polecenia wy¶wietla listê wszystkich dostêpnych lokalnie kontenerów, w której mo¿na sprawdziæ nazwy poszczególnych kontenerów:
+Powy¿sze polecenia wy¶wietla listê wszystkich dostêpnych kontenerów, w której mo¿na sprawdziæ nazwy poszczególnych kontenerów:
 
 
 \begin{center}
@@ -146,7 +146,7 @@ Powy¿sze polecenia wy¶wietla listê wszystkich dostêpnych lokalnie kontenerów, w 
 
 \end{center}
 
-Na przedstawionej na rysunku li¶cie przyk³adowe nazwy to goofy\_varahamihira oraz stupefied\_tesla. Podpiêcie siê konsol± pod otwarty ju¿ kontener opiera siê o polecenie:
+Na przedstawionej na rysunku li¶cie przyk³adowe nazwy to goofy\_varahamihira oraz stupefied\_tesla. Podpiêcie siê terminalem pod wcze¶niej uruchomiony kontener wymaga wpisania polecenia:
 
 
  \begin{verbatim}
@@ -163,28 +163,28 @@ docker start -i $(docker ps -q -l)
 
 \section{Obs³uga systemu}
 \subsection{Dodawanie modelu sali}
-Na obrazie systemu, w chwili obecnej, znajduj± siê trzy przyk³adowe modele ¶wiata:
+W obrazie systemu znajduj± siê trzy przyk³adowe modele ¶wiata:
 \begin{itemize}
 \item model sali L1.5 w budynku C-16
 \item dwa dodatkowe modele sk³adaj±ce siê z u³o¿onych w pewien sposób mebli 
 \end{itemize}
 
-Dodanie jednego z tych ¶wiatów mo¿liwe jest z poziomu okna "Konfiguracja ¦wiata". Dostep do wspomnianego okna jest z poziomu widoku g³ównego Gazebo pod przyciskiem umieszczonym z lewej strony listwy na górze ekranu.
+Dodanie jednego z tych ¶wiatów mo¿liwe jest z poziomu okna \texttt{Konfiguracja ¦wiata}. Dostêp do wspomnianego okna jest z poziomu widoku g³ównego Gazebo pod przyciskiem umieszczonym z lewej strony listwy na górze ekranu.
 \begin{center}
   
     \includegraphics[width=12 cm]{dodatki/grafika/KonfiguracjaSwiata.png}
 
 \end{center}
-W oknie tym, po lewej stronie, znajduje siê lista dostêpnych ¶wiatów oraz dwa przyciski "Wczytaj" i "Wyczy¶æ". Wybran± salê mo¿na dodaæ wybieraj±c j± z lisy i klikaj±c pierwszy przycisk. Je¶li wczytamy inn± salê w momencie, gdy jaka¶ jest ju¿ wczytana, scena zostanie automatycznie wyczyszczona i wczytany aktualnie wybrany ¶wiat. Przycisk "Wyczy¶æ$"$ s³u¿y do usuniêcia wszystkich obiektów ze sceny z wyj±tkiem robotów.
+W oknie tym, po lewej stronie, znajduje siê lista dostêpnych ¶wiatów oraz dwa przyciski \texttt{Wczytaj} i \texttt{Wyczy¶æ}. Wybran± salê mo¿na dodaæ wybieraj±c j± z lisy i klikaj±c pierwszy przycisk. Je¶li wczytamy inn± salê w momencie, gdy jaka¶ jest ju¿ wczytana, scena zostanie automatycznie wyczyszczona i wczytany aktualnie wybrany ¶wiat. Przycisk \texttt{Wyczy¶æ} s³u¿y do usuniêcia wszystkich obiektów ze sceny z wyj±tkiem robotów.
 
  \subsection{Dodawanie modeli robotów}
-Z okna konfiguracji ¶wiata mo¿na równie¿ dodawaæ na scenê roboty (jak narazie dostêpne s± trzy roboty Pioneer). S³u¿± do tego listy na ¶rodku oraz z prawej strony okienka. Lista ¶rodkowa zawiera roboty, które s± dostêpne do dodania, a prawa te, które s± ju¿ dodane. Aby dodaæ robota, nale¿y wybraæ go z listy ¶rodkowej i klikn±æ przycisk " Dodaj". Roboty dodane pojawi± siê na scenie w momencie klikniêcia przycisku $"$Zatwierd¼$"$.  W tym samym momencie pojawiaj± siê w systemie ROS topiki zwi±zane z dodawanymi robotami. Listê topików mo¿na zobaczyæ wpisuj±c w terminalu:
+Z okna konfiguracji ¶wiata mo¿na równie¿ dodawaæ na scenê roboty (jak narazie dostêpne s± trzy roboty Pioneer). S³u¿± do tego listy na ¶rodku oraz z prawej strony okienka. Lista ¶rodkowa zawiera roboty, które s± dostêpne do dodania, a prawa te, które s± ju¿ dodane. Aby dodaæ robota, nale¿y wybraæ go z listy ¶rodkowej i klikn±æ przycisk \texttt{Dodaj}. Roboty dodane pojawi± siê na scenie w momencie klikniêcia przycisku \texttt{Zatwierd¼}.  W tym samym momencie pojawiaj± siê w systemie ROS tematów zwi±zane z dodawanymi robotami. Listê tematów mo¿na zobaczyæ wpisuj±c w terminalu:
 \begin{verbatim}
 rostopic list
 \end{verbatim}
-Przycisk $"$Schowaj" umieszcza wybranego robota poza sal± w tak zwanym schowku.
+Przycisk \texttt{Schowaj} umieszcza wybranego robota poza sal± w tak zwanym schowku.
 
-Aby przetestowaæ czy Gazebo dobrze wspó³pracuje z systemem ROS nale¿y dodaæ robota a nastêpnie w konsoli wydaæ polecenie publikuj±ce w topicu ROSa odpowiadaj±cym za prêdko¶æ dodanego robota:
+Aby przetestowaæ czy Gazebo dobrze wspó³pracuje z systemem ROS nale¿y dodaæ robota a nastêpnie w konsoli wydaæ polecenie publikuj±ce w temacie ROSa odpowiadaj±cym za prêdko¶æ dodanego robota:
 \begin{verbatim}
 rostopic  pub /pionner_1/RosAria/cmd_vel geometry_msgs/Twist \
 -- '[1.0, 0.0, 0.0]' '[0.0, 0.0, -0.5]
@@ -200,7 +200,7 @@ W efekcie robot powinien zacz±æ poruszaæ siê po okrêgu.
 
  \subsection{Resetowanie robotów i ustawianie ich w zadanych miejscach}
 
-Do resetowania i ustawiania w zadanej pozycji robotów s³u¿y okno $"$Zarz±dzanie robotami". Okno podzielone jest na zak³adki - ka¿da z nich dotyczy osobnego robota. Umieszczony w ka¿dej zak³adce przycisk $"$Reset$"$ ustawia odpowiedniego robota w punkcie (0,0) sali z orientacj± równ± 0. Pola tekstowe s³u¿± do zadawania pozycji (X,Y) i orientacji robota. Warto¶ci z tych pól s± wykorzystywane przy u¿ywaniu przycisku "Ustaw". W trakcie klikniêcia warto¶ci te s± sprawdzane i ich ewentualna niepoprawno¶æ jest sygnalizowana czerwonym pod¶wietleniem pola. Dopiero po sprawdzeniu robot przemieszczany jest na ustalon± pozycjê.
+Do resetowania i ustawiania w zadanej pozycji robotów s³u¿y okno \texttt{Zarz±dzanie robotami}. Okno podzielone jest na zak³adki - ka¿da z nich dotyczy osobnego robota. Umieszczony w ka¿dej zak³adce przycisk \texttt{Reset} ustawia odpowiedniego robota w punkcie (0,0) sali z orientacj± równ± 0. Pola tekstowe s³u¿± do zadawania pozycji (X,Y) i orientacji robota. Warto¶ci z tych pól s± wykorzystywane przy u¿ywaniu przycisku \texttt{Ustaw}. W trakcie klikniêcia warto¶ci te s± sprawdzane i ich ewentualna niepoprawno¶æ jest sygnalizowana czerwonym pod¶wietleniem pola. Dopiero po sprawdzeniu robot przemieszczany jest na ustalon± pozycjê.
 \begin{center}
   
     \includegraphics[width=6 cm]{dodatki/grafika/OknoZarzadzaniaRobotami.png}
@@ -209,7 +209,7 @@ Do resetowania i ustawiania w zadanej pozycji robotów s³u¿y okno $"$Zarz±dzanie 
 
 
 \subsection{Wy¶wietlanie i zapisywanie wyników}
-Do wizualizacji i zapisu danych z eksperymentu przygotowane zosta³o okno $"$Wyniki symulacji$"$. Okno podzielone jest na zak³adki, w których mo¿na otrzymaæ podgl±d trajektorii wszystkich robotów oraz przebiegi po³o¿enia X, Y i orientacji. W pierwszej zak³adce s± trasy przebyte przez wszystkie roboty a ka¿da kolejna zak³adka odnosi siê do konkretnego robota prezentuj±c jego po³o¿enie i orientacjê. Przycisk $"$Reset danych$"$ pozwala wyczy¶ciæ wykresy i zacz±æ zbieraæ je od nowa.  Okno daje mo¿liwo¶æ zapisania przebiegów do plików, które znajduj± siê potem w folderze /root/.  Wa¿ne jest te¿ aby przed rozpoczêciem zbierania danych do konkretnego wykresu za pomoc± przycisku z dolnego paska Gazebo $"$PLAY/PAUSE$"$ zatrzymaæ czas symulacyjny nastêpnie przyciskiem $"$Reset Time$"$ aby wykres by³ czytelny.
+Do wizualizacji i zapisu danych z eksperymentu przygotowane zosta³o okno \texttt{Wyniki symulacji}. Okno podzielone jest na zak³adki, w których mo¿na otrzymaæ podgl±d trajektorii wszystkich robotów oraz przebiegi po³o¿enia X, Y i orientacji. W pierwszej zak³adce s± trasy przebyte przez wszystkie roboty a ka¿da kolejna zak³adka odnosi siê do konkretnego robota prezentuj±c jego po³o¿enie i orientacjê. Przycisk \texttt{Reset danych} pozwala wyczy¶ciæ wykresy i zacz±æ zbieraæ je od nowa.  Okno daje mo¿liwo¶æ zapisania przebiegów do plików, które znajduj± siê potem w folderze /root/. Wa¿ne jest te¿, aby przed rozpoczêciem zbierania danych do konkretnego wykresu za pomoc± przycisku z dolnego paska Gazebo \texttt{PLAY/PAUSE} zatrzymaæ czas symulacyjny nastêpnie przyciskiem \texttt{Reset Time}, aby wykres by³ czytelny.
 \begin{center}
 
     \includegraphics[width=6 cm]{dodatki/grafika/Wykres.png}
@@ -224,7 +224,7 @@ Aby uzyskaæ dostêp do pomiarów z czujników nale¿y z paska narzêdzi Gazebo wybraæ
 
 \end{center}
 
-Nastêpnie wybieramy topic czujnika, z którego chcemy wy¶wietlaæ dane. Dla skanera laserowego wykres wygl±da nastêpuj±co:
+Nastêpnie wybieramy temat, w którym wiadomo¶ci wysy³a dany czujnik, z którego chcemy wy¶wietlaæ dane. Dla skanera laserowego wykres wygl±da nastêpuj±co:
 
 \begin{center}
   
@@ -233,8 +233,8 @@ Nastêpnie wybieramy topic czujnika, z którego chcemy wy¶wietlaæ dane. Dla skaner
 \end{center}
 \newpage
 \subsection{Dodawanie i edycja modeli przeszkód na scenie}
-Aby dodaæ przeszkodê na scenê nale¿y z lewej strony ekranu wej¶æ w zak³adkê "Insert", wybraæ klikniêciem model i klikn±æ na miejsce na scenie, w którym chcemy postawiæ przeszkodê. Proste modele przeszkód dostêpne s± z paska narzêdzi Gazabo. 
-Aby zmieniæ statyczno¶æ przeszkody nale¿y klikn±æ na ni± prawym przyciskiem myszy (PPM) a nastêpnie z rozwiniêtego menu wybraæ opcjê $"$Edit Model". Gazebo przejdzie do trybu edycji modelu. Wybieramy zak³adkê "Model" i zaznaczamy lub odznaczamy opcjê $"$Static":
+Aby dodaæ przeszkodê na scenê nale¿y z lewej strony ekranu wej¶æ w zak³adkê \texttt{Insert}, wybraæ klikniêciem model i klikn±æ na miejsce na scenie, w którym chcemy postawiæ przeszkodê. Proste modele przeszkód dostêpne s± z paska narzêdzi Gazabo. 
+Aby zmieniæ statyczno¶æ przeszkody nale¿y klikn±æ na ni± prawym przyciskiem myszy (PPM) a nastêpnie z rozwiniêtego menu wybraæ opcjê \texttt{Edit Model}. Gazebo przejdzie do trybu edycji modelu. Wybieramy zak³adkê \texttt{Model} i zaznaczamy lub odznaczamy opcjê \texttt{Static}:
 
 \begin{center}
 
