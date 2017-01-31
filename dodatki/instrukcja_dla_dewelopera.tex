@@ -41,7 +41,7 @@ Przed uruchomieniem obrazu nale¿y zezwoliæ na pracê obrazu Dockera z X serwerem 
 
 Obraz nale¿y uruchomiæ przy pomocy komendy:
 \begin{itemize}
-\item docker run -it -e DISPLAY=unix\$DISPLAY -v=/tmp/.X11-unix:/tmp\/.X11-unix:rw -v$[$scie¿ka\_do\_katalogu\_lokalnego$]:[$scie¿ka\_gdzie\_ma\_byæ\_montowany\_w\_obrazie$]$ $[$nazwa obrazu$]$
+\item docker run -it -e DISPLAY=unix\$DISPLAY -v=/tmp/.X11-unix:/tmp/.X11-unix:rw -v$[$scie¿ka\_do\_katalogu\_lokalnego$]:[$scie¿ka\_gdzie\_ma\_byæ\_montowany\_w\_obrazie$]$ $[$nazwa obrazu$]$
 \end{itemize}
 
 W miejscu $[$scie¿ka\_do\_katalogu\_lokalnego$]$ nale¿y podaæ ¶cie¿kê do katalogu z pobranym kodem ¼ród³owym pluginu, za $[$scie¿ka\_gdzie\_ma\_byæ\_montowany\_w\_obrazie$]$ nale¿y podstawiæ: /root/catkin\_ws/src/projekt\_przejsciowy
