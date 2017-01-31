@@ -3,7 +3,7 @@
 W ramach testów systemu przygotowano ¶rodowisko zgodnie z instrukcj± u¿ytkownika (zawarta w dodatku A). Po uruchomieniu systemu symulacyjnego wykonano czynno¶ci sprawdzaj±ce dzia³anie podstawowych funkcji oprogramowania, wymaganych do bezproblemowego u¿ytkowania go.
 
 W pierwszej kolejno¶ci sprawdzono poprawno¶æ wczytywania siê modelu laboratorium, oraz umieszczania i chowania robotów ze sceny, test ten wypad³ pomy¶lnie.
-Kolejnym wa¿nym aspektem jest to czy w systemie ROS, po dodaniu robota pojawiaj± siê odpowiednie tematy. Dla robota 'pioneer\_1' s± one nastêpuj±ce:
+Kolejnym wa¿nym aspektem jest to czy w systemie ROS, po dodaniu robota pojawiaj± siê odpowiednie tematy. Dla robota 'pioneer\_1' s± to:
 
 \begin{itemize}
 \item \begin{verbatim}/pioneer_1/RosAria/cmd_vel\end{verbatim}
@@ -23,10 +23,10 @@ Kolejnym wa¿nym aspektem jest to czy w systemie ROS, po dodaniu robota pojawiaj±
 \end{figure}
 
 
-Nastêpnie sprawdzono mo¿liwo¶æ zarz±dzania pozycj± robotów z poziomu okienka 'Zarz±dzanie robotami'. Przeprowadzone testy wykaza³y, ¿e pozycja robota ustawiana jest w sposób odpowiedni, a b³êdnie wprowadzone dane s± odpowiednio sygnalizowane. Jedynym problemem okaza³ siê brak weryfikacji czy miejsce w którym chcemy postawiæ robota jest wolne i czy nie wyl±duje on np. na innym robocie.
+Nastêpnie sprawdzono mo¿liwo¶æ zarz±dzania pozycj± robotów z poziomu okienka \texttt{Zarz±dzanie robotami}. Przeprowadzone testy wykaza³y, ¿e pozycja robota ustawiana jest w~sposób odpowiedni, a b³êdnie wprowadzone dane s± odpowiednio sygnalizowane. Jedynym problemem okaza³ siê brak weryfikacji czy miejsce w którym chcemy postawiæ robota jest wolne i czy nie wyl±duje on np. na innym robocie.
 
 
-Ostatni± grup± funkcjonalno¶ci jest mo¿liwo¶æ rejestracji pozycji robota i zapisanie jej do pliku. W celu jej weryfikacji do systemu ROS opublikowano dwie wiadomo¶ci,  które w efekcie powinny umo¿liwiæ narysowanie robotem ósemki:
+Ostatni± grup± funkcjonalno¶ci jest mo¿liwo¶æ rejestracji pozycji robota i zapisanie jej do pliku. W celu weryfikacji do systemu ROS opublikowano dwie wiadomo¶ci, które w~efekcie powinny umo¿liwiæ narysowanie robotem ósemki:
 \begin{itemize}
 \item \begin{verbatim}rostopic pub /pioneer_1/RosAria/cmd_vel \
 geometry_msgs/Twist -- '[0.5, 0.0, 0.0]' '[0.0, 0.0, 0.2]' \end{verbatim}
@@ -34,7 +34,7 @@ geometry_msgs/Twist -- '[0.5, 0.0, 0.0]' '[0.0, 0.0, 0.2]' \end{verbatim}
 geometry_msgs/Twist -- '[0.5, 0.0, 0.0]' '[0.0, 0.0, -0.3]' \end{verbatim}
 \end{itemize}
 
-Po wykonaniu powy¿szych poleceñ robot pokona³ zamierzon± trasê, a otrzymane wykresy ruchu zgadza³y siê z rzeczywisto¶ci±.
+Po wykonaniu powy¿szych poleceñ robot pokona³ zamierzon± trasê, a otrzymane wykresy ruchu zgadza³y siê z oczekiwaniami.
 
 \begin{figure}[htbp]
  \centering
